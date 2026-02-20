@@ -19,6 +19,10 @@ public class Complaint {
     private String status; // OPEN, IN_PROGRESS, RESOLVED
 
     private LocalDateTime createdAt;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
 
     public Complaint() {
         this.status = "OPEN";
@@ -66,4 +70,14 @@ public class Complaint {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
+    public Department getDepartment() {
+    return department;
+    }
+
+    public void setDepartment(Department department) {
+    this.department = department;
+    }
+
+
 }

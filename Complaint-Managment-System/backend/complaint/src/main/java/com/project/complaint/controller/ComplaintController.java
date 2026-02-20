@@ -33,4 +33,20 @@ public class ComplaintController {
     public Complaint getComplaintById(@PathVariable Long id) {
         return complaintService.getComplaintById(id);
     }
+
+     // UPDATE - complaint status
+    @PutMapping("/{id}/status")
+    public Complaint updateStatus(@PathVariable Long id,
+                                  @RequestParam String status) {
+        return complaintService.updateComplaintStatus(id, status);
+
+    }
+
+    // DELETE - complaint by id
+    @DeleteMapping("/{id}")
+    public String deleteComplaint(@PathVariable Long id) {
+    complaintService.deleteComplaint(id);
+    return "Complaint deleted successfully";
+}
+
 }
