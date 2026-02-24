@@ -1,10 +1,12 @@
 package com.project.complaint.service;
 
 import com.project.complaint.model.Complaint;
+import com.project.complaint.model.Department;
 import com.project.complaint.repository.ComplaintRepository;
 import org.springframework.stereotype.Service;
-import com.project.complaint.model.Department;
 import com.project.complaint.repository.DepartmentRepository;
+import com.project.complaint.dto.DashboardResponse;
+import com.project.complaint.model.Priority;
 
 
 import java.util.List;
@@ -19,29 +21,38 @@ public class ComplaintService {
     public ComplaintService(ComplaintRepository complaintRepository,
                         DepartmentRepository departmentRepository) {
     this.complaintRepository = complaintRepository;
-    this.departmentRepository = departmentRepository;
-}
+    this.departmentRepository = departmentRepository; 
+  }
 
 
     // CREATE
-    public Complaint createComplaint(Complaint complaint) {
+   public Complaint createComplaint(Complaint complaint) {
 
-    String deptName = complaint.getDepartment().getName();
+    // 🔹 Fetch full department from DB
+    Long deptId = complaint.getDepartment().getId();
 
     Department department = departmentRepository
-            .findByName(deptName)
-            .orElseGet(() -> {
-                Department newDept = new Department();
-                newDept.setName(deptName);
-                return departmentRepository.save(newDept);
-            });
+            .findById(deptId)
+            .orElseThrow(() -> new RuntimeException("Department not found"));
 
     complaint.setDepartment(department);
 
+    // 🔹 Default priority
+    complaint.setPriority(Priority.LOW);
+
+    if (complaint.getTitle() != null) {
+        String title = complaint.getTitle().toLowerCase();
+
+        if (title.contains("server") || title.contains("down")) {
+            complaint.setPriority(Priority.HIGH);
+        } 
+        else if (title.contains("network") || title.contains("wifi")) {
+            complaint.setPriority(Priority.MEDIUM);
+        }
+    }
+
     return complaintRepository.save(complaint);
-}
-
-
+    }
     // READ - all
     public List<Complaint> getAllComplaints() {
         return complaintRepository.findAll();
@@ -69,5 +80,14 @@ public class ComplaintService {
 
     complaintRepository.delete(complaint);
     }
+
+    public DashboardResponse getDashboardData() {
+
+    long total = complaintRepository.count();
+    long open = complaintRepository.countByStatus("OPEN");
+    long resolved = complaintRepository.countByStatus("RESOLVED");
+
+    return new DashboardResponse(total, open, resolved);
+  }
 
 }

@@ -18,6 +18,10 @@ public class Complaint {
 
     private String status; // OPEN, IN_PROGRESS, RESOLVED
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Priority priority;
+
     private LocalDateTime createdAt;
     @ManyToOne
     @JoinColumn(name = "department_id")
@@ -25,9 +29,10 @@ public class Complaint {
 
 
     public Complaint() {
-        this.status = "OPEN";
-        this.createdAt = LocalDateTime.now();
-    }
+    this.status = "OPEN";
+    this.priority = Priority.LOW;   // default
+    this.createdAt = LocalDateTime.now();
+   }
 
     // Getters and Setters
 
@@ -77,6 +82,14 @@ public class Complaint {
 
     public void setDepartment(Department department) {
     this.department = department;
+    }
+
+    public Priority getPriority() {
+    return priority;
+}
+
+    public void setPriority(Priority priority) {
+    this.priority = priority;
     }
 
 
