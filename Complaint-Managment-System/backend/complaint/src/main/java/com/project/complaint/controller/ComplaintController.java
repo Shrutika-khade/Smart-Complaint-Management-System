@@ -19,14 +19,20 @@ public class ComplaintController {
 
     // POST - create complaint
     @PostMapping
-    public Complaint createComplaint(@RequestBody Complaint complaint) {
-        return complaintService.createComplaint(complaint);
-    }
-
+    public Complaint createComplaint(@RequestBody Complaint complaint,
+                                 @RequestParam Long userId) {
+    return complaintService.createComplaint(complaint, userId);
+}
     // GET - all complaints
     @GetMapping
     public List<Complaint> getAllComplaints() {
         return complaintService.getAllComplaints();
+    }
+
+    // GET - complaints by user
+   @GetMapping("/user/{userId}")
+    public List<Complaint> getUserComplaints(@PathVariable Long userId) {
+    return complaintService.getComplaintsByUser(userId);
     }
 
     // GET - complaint by id
@@ -38,9 +44,9 @@ public class ComplaintController {
      // UPDATE - complaint status
     @PutMapping("/{id}/status")
     public Complaint updateStatus(@PathVariable Long id,
-                                  @RequestParam String status) {
-        return complaintService.updateComplaintStatus(id, status);
-
+                              @RequestParam String status,
+                              @RequestParam Long userId) {
+    return complaintService.updateComplaintStatus(id, status, userId);
     }
 
     // DELETE - complaint by id

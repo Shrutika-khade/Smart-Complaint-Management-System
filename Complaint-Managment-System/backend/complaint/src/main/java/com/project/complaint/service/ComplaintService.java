@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import com.project.complaint.repository.DepartmentRepository;
 import com.project.complaint.dto.DashboardResponse;
 import com.project.complaint.model.Priority;
+import com.project.complaint.entity.User;
+import com.project.complaint.repository.UserRepository;
+
 
 
 import java.util.List;
@@ -16,17 +19,21 @@ public class ComplaintService {
 
     private final ComplaintRepository complaintRepository;
     private final DepartmentRepository departmentRepository;
+    private final UserRepository userRepository;
 
 
     public ComplaintService(ComplaintRepository complaintRepository,
-                        DepartmentRepository departmentRepository) {
+                        DepartmentRepository departmentRepository,
+                        UserRepository userRepository) {
+
     this.complaintRepository = complaintRepository;
-    this.departmentRepository = departmentRepository; 
-  }
+    this.departmentRepository = departmentRepository;
+    this.userRepository = userRepository;
+   }
 
 
     // CREATE
-   public Complaint createComplaint(Complaint complaint) {
+   public Complaint createComplaint(Complaint complaint, Long userId) {
 
     // 🔹 Fetch full department from DB
     Long deptId = complaint.getDepartment().getId();
@@ -37,7 +44,13 @@ public class ComplaintService {
 
     complaint.setDepartment(department);
 
-    // 🔹 Default priority
+    // 🔹 Fetch user
+    User user = userRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    complaint.setUser(user);
+
+    // 🔹 Default priority logic
     complaint.setPriority(Priority.LOW);
 
     if (complaint.getTitle() != null) {
@@ -52,7 +65,7 @@ public class ComplaintService {
     }
 
     return complaintRepository.save(complaint);
-    }
+}
     // READ - all
     public List<Complaint> getAllComplaints() {
         return complaintRepository.findAll();
@@ -65,13 +78,25 @@ public class ComplaintService {
     }
 
     // UPDATE STATUS
-    public Complaint updateComplaintStatus(Long id, String status) {
-        Complaint complaint = complaintRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Complaint not found"));
+    public Complaint updateComplaintStatus(Long id, String status, Long userId) {
 
-        complaint.setStatus(status);
-        return complaintRepository.save(complaint);
+    Complaint complaint = complaintRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Complaint not found"));
+
+    User user = userRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    // 🔐 ROLE CHECK
+    if (!user.getRole().equals("ADMIN")) {
+        throw new org.springframework.web.server.ResponseStatusException(
+        org.springframework.http.HttpStatus.FORBIDDEN,
+        "Only ADMIN can update status"
+        );
     }
+
+    complaint.setStatus(status);
+    return complaintRepository.save(complaint);
+   }
 
     // DELETE
     public void deleteComplaint(Long id) {
@@ -89,5 +114,8 @@ public class ComplaintService {
 
     return new DashboardResponse(total, open, resolved);
   }
+  public List<Complaint> getComplaintsByUser(Long userId) {
+    return complaintRepository.findByUserId(userId);
+}
 
 }

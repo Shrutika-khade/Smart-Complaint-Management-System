@@ -2,6 +2,7 @@ package com.project.complaint.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import com.project.complaint.entity.User;
 
 @Entity
 @Table(name = "complaints")
@@ -26,6 +27,12 @@ public class Complaint {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+   
+
+   @ManyToOne
+   @JoinColumn(name = "user_id")
+   private User user;
 
 
     public Complaint() {
@@ -86,11 +93,19 @@ public class Complaint {
 
     public Priority getPriority() {
     return priority;
-}
+    }
 
     public void setPriority(Priority priority) {
     this.priority = priority;
     }
+
+    public User getUser() {
+    return user;
+   }
+
+   public void setUser(User user) {
+    this.user = user;
+   }
 
 
 }
