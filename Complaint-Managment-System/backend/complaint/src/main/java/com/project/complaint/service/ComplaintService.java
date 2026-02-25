@@ -113,9 +113,14 @@ public class ComplaintService {
     long resolved = complaintRepository.countByStatus("RESOLVED");
 
     return new DashboardResponse(total, open, resolved);
-  }
-  public List<Complaint> getComplaintsByUser(Long userId) {
+    }
+    // USER wise complaints
+    public List<Complaint> getComplaintsByUser(Long userId) {
     return complaintRepository.findByUserId(userId);
-}
+    }
 
+    // DEPARTMENT wise complaints
+    public List<Complaint> getComplaintsByDepartment(Long deptId) {
+    return complaintRepository.findByDepartmentId(deptId);
+    }
 }

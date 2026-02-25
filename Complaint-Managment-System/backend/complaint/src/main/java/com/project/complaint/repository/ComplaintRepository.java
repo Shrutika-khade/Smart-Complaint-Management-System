@@ -9,5 +9,8 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Long> {
     long countByStatus(String status);
 
     // 🔹 Get complaints by user
+    
     List<Complaint> findByUserId(Long userId);
+
+    List<Complaint> findByDepartmentId(Long departmentId);
 }

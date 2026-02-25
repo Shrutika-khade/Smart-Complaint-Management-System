@@ -62,6 +62,12 @@ public class ComplaintController {
      return complaintService.getDashboardData();
    }
 
+    // DEPARTMENT complaints
+   @GetMapping("/department/{deptId}")
+   public List<Complaint> getDepartmentComplaints(@PathVariable Long deptId) {
+    return complaintService.getComplaintsByDepartment(deptId);
+   }
+
 
 
 }
