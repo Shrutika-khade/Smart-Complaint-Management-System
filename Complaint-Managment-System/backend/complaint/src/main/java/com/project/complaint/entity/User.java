@@ -14,7 +14,6 @@ public class User {
     private String name;
     private String email;
     
-    @JsonIgnore
     private String password;
 
     private String role; // ADMIN or USER
