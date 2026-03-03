@@ -9,20 +9,27 @@ import org.springframework.security.config.Customizer;
 @Configuration
 public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+@Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                        "/api/auth/register",
-                        "/api/auth/login"
-                ).permitAll()
-                .anyRequest().authenticated()
-            )
-            .httpBasic(Customizer.withDefaults());
+    http
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
 
-        return http.build();
+            // Public
+            .requestMatchers("/api/auth/**").permitAll()
+
+            // ADMIN only
+            .requestMatchers("/api/admin/**").hasRole("ADMIN")
+
+            // USER + ADMIN
+            .requestMatchers("/api/complaints/**").hasAnyRole("USER", "ADMIN")
+
+            // Everything else secure
+            .anyRequest().authenticated()
+        )
+        .httpBasic(Customizer.withDefaults());
+
+     return http.build();
     }
 }
