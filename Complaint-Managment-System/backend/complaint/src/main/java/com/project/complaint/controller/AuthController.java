@@ -22,16 +22,15 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // 🔹 Register API
     @PostMapping("/register")
-   public ResponseEntity<?> register(@RequestBody User user) {
+    public ResponseEntity<?> register(@RequestBody User user) {
 
-    // 🔍 DEBUG LINE
-    System.out.println("Incoming password: " + user.getPassword());
+    // Agar role null ho to default USER
+    if (user.getRole() == null || user.getRole().isEmpty()) {
+        user.setRole("USER");
+    }
 
-    user.setRole("USER");
-
-    // 🔐 ENCODE PASSWORD
+    // Encrypt password
     user.setPassword(passwordEncoder.encode(user.getPassword()));
 
     userRepository.save(user);
