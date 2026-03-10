@@ -13,11 +13,11 @@ public class User {
 
     private String name;
     private String email;
-    
-    private String password;
 
-    private String role; // ADMIN or USER
+@JsonIgnore
+private String password;
 
+private String role;
     // Getters and Setters
 public Long getId() {
     return id;

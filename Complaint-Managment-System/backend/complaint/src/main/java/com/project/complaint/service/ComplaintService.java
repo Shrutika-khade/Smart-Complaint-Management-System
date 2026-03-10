@@ -10,8 +10,7 @@ import com.project.complaint.model.Priority;
 import com.project.complaint.entity.User;
 import com.project.complaint.repository.UserRepository;
 
-
-
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -34,6 +33,10 @@ public class ComplaintService {
 
     // CREATE
    public Complaint createComplaint(Complaint complaint, Long userId) {
+
+    complaint.setStatus("OPEN");
+    complaint.setCreatedAt(LocalDateTime.now());
+    complaint.setUpdatedAt(LocalDateTime.now());
 
     // 🔹 Fetch full department from DB
     Long deptId = complaint.getDepartment().getId();
@@ -63,6 +66,7 @@ public class ComplaintService {
             complaint.setPriority(Priority.MEDIUM);
         }
     }
+    
 
     return complaintRepository.save(complaint);
 }

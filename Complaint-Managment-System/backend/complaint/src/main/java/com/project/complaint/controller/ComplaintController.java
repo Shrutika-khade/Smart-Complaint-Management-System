@@ -2,8 +2,11 @@ package com.project.complaint.controller;
 
 import com.project.complaint.model.Complaint;
 import com.project.complaint.service.ComplaintService;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.project.complaint.dto.DashboardResponse;
+
 
 import java.util.List;
 
@@ -51,10 +54,10 @@ public class ComplaintController {
 
     // DELETE - complaint by id
     @DeleteMapping("/{id}")
-    public String deleteComplaint(@PathVariable Long id) {
+public ResponseEntity<String> deleteComplaint(@PathVariable Long id) {
     complaintService.deleteComplaint(id);
-    return "Complaint deleted successfully";
-   }
+    return ResponseEntity.ok("Complaint deleted successfully");
+}
 
    // DASHBOARD DATA
    @GetMapping("/dashboard")

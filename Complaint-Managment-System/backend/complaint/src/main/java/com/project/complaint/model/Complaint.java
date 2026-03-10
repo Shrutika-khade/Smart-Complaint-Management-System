@@ -24,6 +24,7 @@ public class Complaint {
     private Priority priority;
 
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
@@ -39,6 +40,7 @@ public class Complaint {
     this.status = "OPEN";
     this.priority = Priority.LOW;   // default
     this.createdAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
    }
 
     // Getters and Setters
@@ -105,6 +107,14 @@ public class Complaint {
 
    public void setUser(User user) {
     this.user = user;
+   }
+
+   public LocalDateTime getUpdatedAt() {
+    return updatedAt;
+   }
+
+   public void setUpdatedAt(LocalDateTime updatedAt) {
+    this.updatedAt = updatedAt;
    }
 
 
