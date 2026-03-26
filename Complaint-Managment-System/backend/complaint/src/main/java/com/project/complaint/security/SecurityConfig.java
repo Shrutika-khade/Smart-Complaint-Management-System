@@ -14,22 +14,33 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     http
         .csrf(csrf -> csrf.disable())
+        .cors(Customizer.withDefaults()) // 🔥 ADDED
         .authorizeHttpRequests(auth -> auth
 
-            // Public
             .requestMatchers("/api/auth/**").permitAll()
-
-            // ADMIN only
             .requestMatchers("/api/admin/**").hasRole("ADMIN")
-
-            // USER + ADMIN
             .requestMatchers("/api/complaints/**").hasAnyRole("USER", "ADMIN")
-
-            // Everything else secure
             .anyRequest().authenticated()
         )
         .httpBasic(Customizer.withDefaults());
 
      return http.build();
-    }
+}
+
+// 🔥 CORS CONFIG ADD
+@Bean
+public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
+    org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration();
+
+    configuration.setAllowedOrigins(java.util.List.of("http://127.0.0.1:3000"));
+    configuration.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+    configuration.setAllowedHeaders(java.util.List.of("*"));
+    configuration.setAllowCredentials(true);
+
+    org.springframework.web.cors.UrlBasedCorsConfigurationSource source =
+            new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
+
+    source.registerCorsConfiguration("/**", configuration);
+    return source;
+}
 }
