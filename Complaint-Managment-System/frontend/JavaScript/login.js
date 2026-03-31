@@ -1,49 +1,39 @@
-document.getElementById("loginForm").addEventListener("submit", function(event){
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-event.preventDefault();
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
 
-console.log("Login clicked");
+    fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",   // 🔥 IMPORTANT
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+    .then(response => response.json())
+.then(data => {
 
-let email = document.getElementById("email").value;
-let password = document.getElementById("password").value;
-
-console.log(email, password);
-
-let base64Credentials = btoa(email + ":" + password);
-
-fetch("http://localhost:8080/api/complaints", {
-
-    method: "GET",
-
-    headers: {
-        "Authorization": "Basic " + base64Credentials
-    }
-
-})
-.then(response => {
-
-    console.log("Response status:", response.status);
-
-    if(response.ok){
+    if (data.message === "Login Successful") {
 
         alert("Login Successful 🎉");
 
-        localStorage.setItem("auth", base64Credentials);
-
-        window.location = "dashboard.html";
+        // 🔥 ROLE BASED REDIRECT
+        if (data.role === "ADMIN") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "dashboard.html";
+        }
 
     } else {
-
-        alert("Invalid email or password ❌");
-
+        alert("Login Failed");
     }
-
 })
 .catch(error => {
-
     console.error(error);
     alert("Server Error ❌");
-
 });
-
 });

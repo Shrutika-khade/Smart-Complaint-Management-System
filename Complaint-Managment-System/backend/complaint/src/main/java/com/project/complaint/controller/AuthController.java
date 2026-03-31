@@ -7,6 +7,9 @@ import com.project.complaint.entity.User;
 import com.project.complaint.repository.UserRepository;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -37,4 +40,28 @@ public class AuthController {
 
     return ResponseEntity.ok("User Registered Successfully");
    }
+   
+
+@PostMapping("/login")
+public ResponseEntity<?> login(@RequestBody User user) {
+
+    Optional<User> optionalUser = userRepository.findByEmail(user.getEmail());
+
+    if (optionalUser.isEmpty()) {
+        return ResponseEntity.status(401).body("Invalid email");
+    }
+
+    User existingUser = optionalUser.get();
+
+    if (!passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
+        return ResponseEntity.status(401).body("Invalid password");
+    }
+
+    // 🔥 ROLE SEND KARO
+    Map<String, String> response = new HashMap<>();
+    response.put("message", "Login Successful");
+    response.put("role", existingUser.getRole());
+
+    return ResponseEntity.ok(response);
+}
 }
