@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+<title>Admin Dashboard</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 body{
-background: linear-gradient(135deg,#667eea,#764ba2);
+background: linear-gradient(135deg,#ff9a9e,#fad0c4);
 height:100vh;
 }
 </style>
@@ -17,7 +17,7 @@ height:100vh;
 
 <body>
 
-<div class="container mt-5 text-center text-white">
+<div class="container mt-5 text-center">
 
 <h2 id="welcome"></h2>
 
@@ -25,15 +25,15 @@ height:100vh;
 
 <div class="col-md-4">
 <div class="card p-3">
-<h5>Create Complaint</h5>
-<button onclick="goToCreate()" class="btn btn-primary">Open</button>
+<h5>View All Complaints</h5>
+<button onclick="goToAll()" class="btn btn-warning">Open</button>
 </div>
 </div>
 
 <div class="col-md-4">
 <div class="card p-3">
-<h5>My Complaints</h5>
-<button onclick="goToMy()" class="btn btn-success">View</button>
+<h5>Manage Users</h5>
+<button class="btn btn-info">Open</button>
 </div>
 </div>
 
@@ -48,7 +48,7 @@ height:100vh;
 
 </div>
 
-<script src="JavaScript/dashboard.js"></script>
+<script src="JavaScript/admin.js"></script>
 
 </body>
 </html>

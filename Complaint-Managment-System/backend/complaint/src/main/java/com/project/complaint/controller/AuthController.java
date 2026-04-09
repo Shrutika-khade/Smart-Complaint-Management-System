@@ -57,10 +57,10 @@ public ResponseEntity<?> login(@RequestBody User user) {
         return ResponseEntity.status(401).body("Invalid password");
     }
 
-    // 🔥 ROLE SEND KARO
     Map<String, String> response = new HashMap<>();
     response.put("message", "Login Successful");
     response.put("role", existingUser.getRole());
+    response.put("name", existingUser.getName());
 
     return ResponseEntity.ok(response);
 }

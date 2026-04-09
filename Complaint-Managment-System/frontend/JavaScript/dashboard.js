@@ -1,27 +1,26 @@
-// 🔐 Check login
 if(!localStorage.getItem("auth")){
-    alert("Please login first ❌");
+    alert("Login first ❌");
     window.location = "login.html";
 }
 
-// ➕ Create Complaint
+// ❌ ADMIN KO YAHAN NA AANE DO
+if(localStorage.getItem("role") === "ADMIN"){
+    window.location = "admin.html";
+}
+
+document.getElementById("welcome").innerText =
+"Welcome " + localStorage.getItem("name") + " 🚀";
+
 function goToCreate(){
     window.location = "create-complaint.html";
 }
 
-// 📄 My Complaints
 function goToMy(){
     window.location = "my-complaints.html";
 }
 
-// 👨‍💼 Admin Panel
-function goToAdmin(){
-    window.location = "admin.html";
-}
-
-// 🚪 Logout
 function logout(){
-    localStorage.removeItem("auth");
-    alert("Logged out successfully");
+    localStorage.clear();
+    alert("Logged out");
     window.location = "login.html";
 }
