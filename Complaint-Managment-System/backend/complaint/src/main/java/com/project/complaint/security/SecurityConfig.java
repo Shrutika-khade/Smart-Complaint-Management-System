@@ -8,7 +8,6 @@ import org.springframework.security.config.Customizer;
 
 @Configuration
 public class SecurityConfig {
-
 @Bean
 public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -16,18 +15,13 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         .csrf(csrf -> csrf.disable())
         .cors(Customizer.withDefaults())
         .authorizeHttpRequests(auth -> auth
-
-            .requestMatchers("/api/auth/**").permitAll()
-            .requestMatchers("/api/admin/**").hasRole("ADMIN")
-            .requestMatchers("/api/complaints/**").hasAnyRole("USER", "ADMIN")
-            .anyRequest().authenticated()
+            .anyRequest().permitAll()   // 🔥 सब open
         )
-        .httpBasic(httpBasic -> httpBasic.disable())   // ❌ disable this
-        .formLogin(form -> form.disable());            // ❌ disable this
+        .httpBasic(httpBasic -> httpBasic.disable())
+        .formLogin(form -> form.disable());
 
     return http.build();
 }
-
 // 🔥 CORS CONFIG ADD
 @Bean
 public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {

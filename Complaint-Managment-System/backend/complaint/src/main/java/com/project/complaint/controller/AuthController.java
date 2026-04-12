@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.project.complaint.entity.User;
 import com.project.complaint.repository.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
@@ -43,7 +44,8 @@ public class AuthController {
    
 
 @PostMapping("/login")
-public ResponseEntity<?> login(@RequestBody User user) {
+public ResponseEntity<?> login(@RequestBody User user,
+                               HttpServletRequest request) {
 
     Optional<User> optionalUser = userRepository.findByEmail(user.getEmail());
 
@@ -56,6 +58,9 @@ public ResponseEntity<?> login(@RequestBody User user) {
     if (!passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
         return ResponseEntity.status(401).body("Invalid password");
     }
+
+    // 🔥 SESSION CREATE
+    request.getSession(true).setAttribute("user", existingUser.getEmail());
 
     Map<String, String> response = new HashMap<>();
     response.put("message", "Login Successful");

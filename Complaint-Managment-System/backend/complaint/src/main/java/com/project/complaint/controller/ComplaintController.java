@@ -21,14 +21,7 @@ public class ComplaintController {
     }
 
     // POST - create complaint
-    @PostMapping
-public Complaint createComplaint(@RequestBody Complaint complaint,
-                                 Principal principal) {
-
-    String email = principal.getName();
-
-    return complaintService.createComplaintByEmail(complaint, email);
-}
+  
     // GET - all complaints
     @GetMapping
     public List<Complaint> getAllComplaints() {
@@ -76,6 +69,19 @@ public Complaint createComplaint(@RequestBody Complaint complaint,
    public List<Complaint> getDepartmentComplaints(@PathVariable Long deptId) {
     return complaintService.getComplaintsByDepartment(deptId);
    }
+   @PostMapping
+public Complaint createComplaint(@RequestBody Complaint complaint,
+                                 Principal principal) {
+
+    if (principal == null) {
+        throw new RuntimeException("User not logged in ❌");
+    }
+
+    String email = principal.getName();
+    System.out.println("Logged user: " + email);
+
+    return complaintService.createComplaintByEmail(complaint, email);
+}
 
 
 

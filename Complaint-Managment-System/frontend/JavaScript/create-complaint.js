@@ -12,23 +12,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const departmentId = document.getElementById("departmentId").value;
 
         const data = {
-            title: title,
-            description: description,
-            department: {
-                id: departmentId
-            }
-        };
+    title: title,
+    description: description,
+    department: {
+        id: parseInt(departmentId)   // 🔥 IMPORTANT
+    }
+};
 
         try {
             const response = await fetch(API_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                credentials: "include", // 🔐 important
-                body: JSON.stringify(data)
-            });
-
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    credentials: "include",
+    body: JSON.stringify(data)
+});
             if (response.ok) {
                 alert("✅ Complaint Submitted!");
                 form.reset();
