@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.project.complaint.dto.DashboardResponse;
 
-
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -22,9 +22,12 @@ public class ComplaintController {
 
     // POST - create complaint
     @PostMapping
-    public Complaint createComplaint(@RequestBody Complaint complaint,
-                                 @RequestParam Long userId) {
-    return complaintService.createComplaint(complaint, userId);
+public Complaint createComplaint(@RequestBody Complaint complaint,
+                                 Principal principal) {
+
+    String email = principal.getName();
+
+    return complaintService.createComplaintByEmail(complaint, email);
 }
     // GET - all complaints
     @GetMapping
@@ -48,16 +51,19 @@ public class ComplaintController {
     @PutMapping("/{id}/status")
     public Complaint updateStatus(@PathVariable Long id,
                               @RequestParam String status,
-                              @RequestParam Long userId) {
-    return complaintService.updateComplaintStatus(id, status, userId);
-    }
+                              Principal principal) {
+
+    String email = principal.getName();
+
+    return complaintService.updateComplaintStatusByEmail(id, status, email);
+   }
 
     // DELETE - complaint by id
     @DeleteMapping("/{id}")
-public ResponseEntity<String> deleteComplaint(@PathVariable Long id) {
+    public ResponseEntity<String> deleteComplaint(@PathVariable Long id) {
     complaintService.deleteComplaint(id);
     return ResponseEntity.ok("Complaint deleted successfully");
-}
+   }
 
    // DASHBOARD DATA
    @GetMapping("/dashboard")

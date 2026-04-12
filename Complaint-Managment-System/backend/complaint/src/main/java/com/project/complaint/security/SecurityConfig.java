@@ -14,7 +14,7 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     http
         .csrf(csrf -> csrf.disable())
-        .cors(Customizer.withDefaults()) // 🔥 ADDED
+        .cors(Customizer.withDefaults())
         .authorizeHttpRequests(auth -> auth
 
             .requestMatchers("/api/auth/**").permitAll()
@@ -22,9 +22,10 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
             .requestMatchers("/api/complaints/**").hasAnyRole("USER", "ADMIN")
             .anyRequest().authenticated()
         )
-        .httpBasic(Customizer.withDefaults());
+        .httpBasic(httpBasic -> httpBasic.disable())   // ❌ disable this
+        .formLogin(form -> form.disable());            // ❌ disable this
 
-     return http.build();
+    return http.build();
 }
 
 // 🔥 CORS CONFIG ADD
@@ -32,7 +33,7 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
     org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration();
 
-    configuration.setAllowedOrigins(java.util.List.of("http://127.0.0.1:5500"));
+    configuration.setAllowedOrigins(java.util.List.of("http://127.0.0.1:5500", "http://localhost:5500"));
     configuration.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
     configuration.setAllowedHeaders(java.util.List.of("*"));
     configuration.setAllowCredentials(true);

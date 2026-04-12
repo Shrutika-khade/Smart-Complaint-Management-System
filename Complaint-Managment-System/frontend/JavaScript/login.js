@@ -9,6 +9,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: "include",   // 🔥🔥 ADD THIS LINE
         body: JSON.stringify({
             email: email,
             password: password
@@ -21,12 +22,10 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
 
             alert("Login Successful 🎉");
 
-            // 🔥 STORE DATA
             localStorage.setItem("auth", "true");
             localStorage.setItem("role", data.role);
             localStorage.setItem("name", data.name);
 
-            // 🔥 ROLE BASED REDIRECT
             if(data.role === "ADMIN"){
                 window.location.href = "admin.html";
             } else {

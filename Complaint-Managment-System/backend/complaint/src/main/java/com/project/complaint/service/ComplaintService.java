@@ -30,6 +30,16 @@ public class ComplaintService {
     this.userRepository = userRepository;
    }
 
+   public Complaint createComplaintByEmail(Complaint complaint, String email) {
+
+    // 🔹 Find user by email
+    User user = userRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    // 🔹 Reuse existing method (BEST PRACTICE 🔥)
+    return createComplaint(complaint, user.getId());
+}
+
 
     // CREATE
    public Complaint createComplaint(Complaint complaint, Long userId) {
@@ -82,26 +92,27 @@ public class ComplaintService {
     }
 
     // UPDATE STATUS
-    public Complaint updateComplaintStatus(Long id, String status, Long userId) {
+   public Complaint updateComplaintStatusByEmail(Long id, String status, String email) {
 
     Complaint complaint = complaintRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Complaint not found"));
 
-    User user = userRepository.findById(userId)
+    User user = userRepository.findByEmail(email)
             .orElseThrow(() -> new RuntimeException("User not found"));
 
     // 🔐 ROLE CHECK
     if (!user.getRole().equals("ADMIN")) {
         throw new org.springframework.web.server.ResponseStatusException(
-        org.springframework.http.HttpStatus.FORBIDDEN,
-        "Only ADMIN can update status"
+                org.springframework.http.HttpStatus.FORBIDDEN,
+                "Only ADMIN can update status"
         );
     }
 
     complaint.setStatus(status);
-    return complaintRepository.save(complaint);
-   }
+    complaint.setUpdatedAt(LocalDateTime.now());
 
+    return complaintRepository.save(complaint);
+}
     // DELETE
     public void deleteComplaint(Long id) {
     Complaint complaint = complaintRepository.findById(id)
