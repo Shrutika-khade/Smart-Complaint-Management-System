@@ -69,20 +69,11 @@ public class ComplaintController {
    public List<Complaint> getDepartmentComplaints(@PathVariable Long deptId) {
     return complaintService.getComplaintsByDepartment(deptId);
    }
-   @PostMapping
-public Complaint createComplaint(@RequestBody Complaint complaint,
-                                 Principal principal) {
+  @PostMapping
+public Complaint createComplaint(@RequestBody Complaint complaint) {
 
-    if (principal == null) {
-        throw new RuntimeException("User not logged in ❌");
-    }
-
-    String email = principal.getName();
-    System.out.println("Logged user: " + email);
-
-    return complaintService.createComplaintByEmail(complaint, email);
+    // TEMP FIX: userId = 1 (manual user)
+    return complaintService.createComplaint(complaint, 1L);
 }
-
-
 
 }

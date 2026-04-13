@@ -42,15 +42,28 @@ public class ComplaintService {
 
 
     // CREATE
-   public Complaint createComplaint(Complaint complaint, Long userId) {
+  public Complaint createComplaint(Complaint complaint, Long userId) {
+
+    System.out.println("Complaint object: " + complaint);
+    System.out.println("Department: " + complaint.getDepartment());
+    System.out.println("Dept ID: " + (complaint.getDepartment() != null ? complaint.getDepartment().getId() : "NULL"));
 
     complaint.setStatus("OPEN");
     complaint.setCreatedAt(LocalDateTime.now());
     complaint.setUpdatedAt(LocalDateTime.now());
 
-    // 🔹 Fetch full department from DB
+    // 🔥 ADD THIS BLOCK HERE
+    if (complaint.getDepartment() == null || complaint.getDepartment().getId() == null) {
+        throw new RuntimeException("Department ID missing ❌");
+    }
+
     Long deptId = complaint.getDepartment().getId();
 
+    // 🔥 DEBUG PRINTS (YAHI ADD KARNA HAI)
+    System.out.println("Dept ID: " + deptId);
+    System.out.println("Title: " + complaint.getTitle());
+
+    // 🔹 Fetch full department from DB
     Department department = departmentRepository
             .findById(deptId)
             .orElseThrow(() -> new RuntimeException("Department not found"));
