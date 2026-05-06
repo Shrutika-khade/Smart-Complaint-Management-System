@@ -33,7 +33,7 @@ height:100vh;
 <div class="col-md-4">
 <div class="card p-3">
 <h5>Manage Users</h5>
-<button class="btn btn-info">Open</button>
+<button onclick="goToUsers()" class="btn btn-info">Open</button>
 </div>
 </div>
 
@@ -43,6 +43,31 @@ height:100vh;
 <button onclick="logout()" class="btn btn-danger">Logout</button>
 </div>
 </div>
+
+</div>
+
+<div class="row mt-5">
+
+  <div class="col-md-4">
+    <div class="card p-3 shadow">
+      <h5>Total Complaints</h5>
+      <h3 id="total">0</h3>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-3 shadow bg-danger text-white">
+      <h5>Open Complaints</h5>
+      <h3 id="open">0</h3>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-3 shadow bg-success text-white">
+      <h5>Resolved Complaints</h5>
+      <h3 id="resolved">0</h3>
+    </div>
+  </div>
 
 </div>
 

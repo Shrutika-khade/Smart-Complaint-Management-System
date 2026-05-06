@@ -42,14 +42,11 @@ public class ComplaintController {
 
      // UPDATE - complaint status
     @PutMapping("/{id}/status")
-    public Complaint updateStatus(@PathVariable Long id,
-                              @RequestParam String status,
-                              Principal principal) {
+public Complaint updateStatus(@PathVariable Long id,
+                              @RequestParam String status) {
 
-    String email = principal.getName();
-
-    return complaintService.updateComplaintStatusByEmail(id, status, email);
-   }
+    return complaintService.updateStatus(id, status);
+}
 
     // DELETE - complaint by id
     @DeleteMapping("/{id}")

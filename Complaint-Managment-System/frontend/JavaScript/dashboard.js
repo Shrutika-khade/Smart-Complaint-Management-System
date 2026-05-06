@@ -1,25 +1,28 @@
-if(!localStorage.getItem("auth")){
+if (!localStorage.getItem("auth")) {
     alert("Login first ❌");
     window.location = "login.html";
 }
 
-// ❌ ADMIN KO YAHAN NA AANE DO
-if(localStorage.getItem("role") === "ADMIN"){
+// ADMIN को redirect करो
+if (localStorage.getItem("role") === "ADMIN") {
     window.location = "admin.html";
 }
 
+// Welcome text
+const name = localStorage.getItem("name");
 document.getElementById("welcome").innerText =
-"Welcome " + localStorage.getItem("name") + " 🚀";
+    "Welcome " + name + " 🚀";
 
-function goToCreate(){
+// Navigation
+function goToCreate() {
     window.location = "create-complaint.html";
 }
 
-function goToMy(){
-    window.location = "my-complaints.html";
+function goToMy() {
+    window.location = "user-complaints.html"; // ✅ updated
 }
 
-function logout(){
+function logout() {
     localStorage.clear();
     alert("Logged out");
     window.location = "login.html";

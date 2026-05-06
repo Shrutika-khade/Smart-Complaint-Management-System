@@ -9,6 +9,7 @@ import com.project.complaint.dto.DashboardResponse;
 import com.project.complaint.model.Priority;
 import com.project.complaint.entity.User;
 import com.project.complaint.repository.UserRepository;
+import com.project.complaint.model.Complaint;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -151,4 +152,15 @@ public class ComplaintService {
     public List<Complaint> getComplaintsByDepartment(Long deptId) {
     return complaintRepository.findByDepartmentId(deptId);
     }
+    public Complaint updateStatus(Long id, String status) {
+    Complaint c = complaintRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Complaint not found"));
+
+    c.setStatus(status);
+
+    return complaintRepository.save(c);
+}
+
+
+
 }
