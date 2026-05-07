@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.project.complaint.entity.User;
 import com.project.complaint.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
+import com.project.complaint.security.JwtUtil;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
@@ -19,12 +20,16 @@ public class AuthController {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
     public AuthController(UserRepository userRepository,
-                          PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+                      PasswordEncoder passwordEncoder,
+                      JwtUtil jwtUtil) {
+
+    this.userRepository = userRepository;
+    this.passwordEncoder = passwordEncoder;
+    this.jwtUtil = jwtUtil;
+}
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
@@ -59,13 +64,15 @@ public ResponseEntity<?> login(@RequestBody User user,
         return ResponseEntity.status(401).body("Invalid password");
     }
 
-    // 🔥 SESSION CREATE
-    request.getSession(true).setAttribute("user", existingUser.getEmail());
+    // 🔥 JWT TOKEN GENERATE
+    String token = jwtUtil.generateToken(existingUser.getEmail());
 
     Map<String, String> response = new HashMap<>();
+
     response.put("message", "Login Successful");
     response.put("role", existingUser.getRole());
     response.put("name", existingUser.getName());
+    response.put("token", token);
 
     return ResponseEntity.ok(response);
 }
