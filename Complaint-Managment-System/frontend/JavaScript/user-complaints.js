@@ -2,18 +2,33 @@ const API_URL = "http://localhost:8080/api/complaints";
 
 async function loadComplaints() {
 
-    const response = await fetch(API_URL);
+    const response = await fetch(API_URL, {
+
+        headers: {
+
+            "Authorization":
+            "Bearer " + localStorage.getItem("token")
+        }
+    });
+
     const data = await response.json();
 
     const container = document.getElementById("list");
+
     container.innerHTML = "";
 
     data.forEach(c => {
 
         let color = "green";
 
-        if (c.priority === "HIGH") color = "red";
-        else if (c.priority === "MEDIUM") color = "orange";
+        if (c.priority === "HIGH") {
+
+            color = "red";
+
+        } else if (c.priority === "MEDIUM") {
+
+            color = "orange";
+        }
 
         const div = document.createElement("div");
 
@@ -21,8 +36,11 @@ async function loadComplaints() {
 
         div.innerHTML = `
             <h4>${c.title}</h4>
+
             <p>${c.description}</p>
+
             <p>Status: <b>${c.status}</b></p>
+
             <p style="color:${color}; font-weight:bold;">
                 Priority: ${c.priority}
             </p>

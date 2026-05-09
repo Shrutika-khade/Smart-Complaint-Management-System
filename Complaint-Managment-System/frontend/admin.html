@@ -1,77 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-body{
-background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-height:100vh;
-}
-</style>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pro Admin Dashboard</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/admin.css">
 
 </head>
 
 <body>
 
-<div class="container mt-5 text-center">
-
-<h2 id="welcome"></h2>
-
-<div class="row mt-4">
-
-<div class="col-md-4">
-<div class="card p-3">
-<h5>View All Complaints</h5>
-<button onclick="goToAll()" class="btn btn-warning">Open</button>
-</div>
+<!-- LOADER -->
+<div id="loader">
+    <div class="spinner"></div>
 </div>
 
-<div class="col-md-4">
-<div class="card p-3">
-<h5>Manage Users</h5>
-<button onclick="goToUsers()" class="btn btn-info">Open</button>
-</div>
-</div>
+<!-- TOAST -->
+<div id="toast"></div>
 
-<div class="col-md-4">
-<div class="card p-3">
-<h5>Logout</h5>
-<button onclick="logout()" class="btn btn-danger">Logout</button>
-</div>
-</div>
+<!-- SIDEBAR -->
+<div class="sidebar">
 
-</div>
-
-<div class="row mt-5">
-
-  <div class="col-md-4">
-    <div class="card p-3 shadow">
-      <h5>Total Complaints</h5>
-      <h3 id="total">0</h3>
+    <div class="logo">
+    <span>🚀</span>
+    <div>
+        <h2>ResolveX</h2>
+        <p>Complaint System</p>
     </div>
-  </div>
+</div>
 
-  <div class="col-md-4">
-    <div class="card p-3 shadow bg-danger text-white">
-      <h5>Open Complaints</h5>
-      <h3 id="open">0</h3>
-    </div>
-  </div>
+                                                  
+<div>
 
-  <div class="col-md-4">
-    <div class="card p-3 shadow bg-success text-white">
-      <h5>Resolved Complaints</h5>
-      <h3 id="resolved">0</h3>
+        
+
+        <ul>
+
+            <li class="active" onclick="goDashboard()">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </li>
+
+            <li onclick="goToAll()">
+                <i class="fa-solid fa-folder-open"></i>
+                Complaints
+            </li>
+
+            <li onclick="goToUsers()">
+                <i class="fa-solid fa-users"></i>
+                Users
+            </li>
+
+        </ul>
+
     </div>
-  </div>
+
+    
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div>
+            <h2>Admin Dashboard</h2>
+            <p id="welcome"></p>
+        </div>
+
+        <div class="top-right">
+
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text"
+                       placeholder="Search..."
+                       id="searchInput">
+            </div>
+
+            <div class="notification-container">
+
+    <div class="icon-btn" onclick="toggleNotifications()">
+        <i class="fa-solid fa-bell"></i>
+
+        <span class="notification-badge">
+            4
+        </span>
+    </div>
+
+    <div class="notification-dropdown"
+         id="notificationDropdown">
+
+        <div class="notification-header">
+
+            <h3>Notifications</h3>
+
+            <span>4 New</span>
+
+        </div>
+
+        <div class="notification-item unread">
+            🟢 New complaint submitted
+            <small>2 min ago</small>
+        </div>
+
+        <div class="notification-item unread">
+            🟠 Complaint pending
+            <small>10 min ago</small>
+        </div>
+
+        <div class="notification-item">
+            🔵 New user registered
+            <small>30 min ago</small>
+        </div>
+
+        <div class="notification-item">
+            🟣 Complaint resolved
+            <small>1 hour ago</small>
+        </div>
+
+        <button class="view-all-btn">
+            View All Notifications
+        </button>
+
+        </div>
+      </div>
+
+            <div class="icon-btn" onclick="toggleTheme()">
+                  <i class="fa-solid fa-moon"></i>
+           </div>
+
+ <div class="profile-container">
+
+          <div class="profile-btn" onclick="toggleProfileMenu()">
+              <i class="fa-solid fa-user"></i>
+         </div>
+
+    <div class="profile-dropdown" id="profileDropdown">
+
+        <div class="profile-info">
+            <h4 id="profileName"></h4>
+            <p>Administrator</p>
+        </div>
+
+        <hr>
+
+        <button onclick="toggleTheme()">
+            🌙 Toggle Theme
+        </button>
+
+        <button>
+            ⚙ Settings
+        </button>
+
+        <button>
+            🔒 Change Password
+        </button>
+
+        <button onclick="logout()" class="logout-btn">
+            🚪 Logout
+        </button>
+
+    </div>
+</div>
+
+        </div>
+
+    </div>
+
+    <!-- STATS CARDS -->
+
+    <div class="cards">
+
+        <div class="dashboard-card glow1">
+
+            <i class="fa-solid fa-chart-column"></i>
+
+            <h3 id="total">0</h3>
+
+            <p>Total Complaints</p>
+
+        </div>
+
+        <div class="dashboard-card glow2">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+            <h3 id="open">0</h3>
+
+            <p>Open Complaints</p>
+
+        </div>
+
+        <div class="dashboard-card glow3">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3 id="resolved">0</h3>
+
+            <p>Resolved Complaints</p>
+
+        </div>
+
+        <div class="dashboard-card glow4">
+
+            <i class="fa-solid fa-users"></i>
+
+            <h3 id="users">0</h3>
+
+            <p>Total Users</p>
+
+        </div>
+
+    </div>
+
+    <!-- CHARTS -->
+
+    <div class="charts">
+
+        <div class="chart-box">
+
+    <div class="chart-header">
+
+        <h4>Complaint Status</h4>
+
+        <span class="chart-tag">
+            Live
+        </span>
+
+    </div>
+
+    <div class="chart-container">
+
+        <canvas id="pieChart"></canvas>
+
+    </div>
 
 </div>
 
+        <div class="chart-box">
+
+    <div class="chart-header">
+
+        <h4>Complaint Analytics</h4>
+
+        <span class="chart-tag">
+            Reports
+        </span>
+
+    </div>
+
+    <div class="chart-container">
+
+        <canvas id="barChart"></canvas>
+
+    </div>
+
 </div>
+    </div>
+
+    <!-- ACTIVITY + TABLE -->
+
+    <div class="bottom-section">
+
+        <!-- RECENT TABLE -->
+
+        <div class="table-box">
+
+            <div class="table-header">
+                <h4>Recent Complaints</h4>
+            </div>
+
+            <table class="custom-table">
+
+                <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="recentTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- LIVE ACTIVITY -->
+
+        <div class="activity-box">
+
+            <h4>Live Activity</h4>
+
+            <div id="activityFeed">
+
+                <div class="activity-item">
+                    🔥 Complaint #12 submitted
+                </div>
+
+                <div class="activity-item">
+                    ✅ Complaint resolved
+                </div>
+
+                <div class="activity-item">
+                    👤 New user registered
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 
 <script src="JavaScript/admin.js"></script>
 
