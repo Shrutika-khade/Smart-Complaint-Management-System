@@ -1,66 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResolveX Admin Dashboard</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/admin.css">
 
-    <title>Pro Admin Dashboard</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/admin.css">
-
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-    <div class="spinner"></div>
-</div>
+<div class="dashboard">
 
-<!-- TOAST -->
-<div id="toast"></div>
+    <!-- SIDEBAR -->
 
-<!-- SIDEBAR -->
-<div class="sidebar">
+    <aside class="sidebar">
 
-    <div class="logo">
-    <span>🚀</span>
-    <div>
-        <h2>ResolveX</h2>
-        <p>Complaint System</p>
+    <!-- TOP LOGO AREA -->
+
+   <div class="sidebar-top">
+
+    <div class="logo-section">
+
+        <div class="logo-icon">🚀</div>
+
+        <div>
+            <h1>ResolveX</h1>
+            <p>Complaint System</p>
+        </div>
+
     </div>
+
 </div>
 
-                                                  
-<div>
+    <!-- MENU -->
 
-        
+    <div class="sidebar-menu">
 
-        <ul>
+        <ul class="menu">
 
-            <li class="active" onclick="goDashboard()">
+            <li class="active">
                 <i class="fa-solid fa-house"></i>
                 Dashboard
             </li>
 
-            <li onclick="goToAll()">
-                <i class="fa-solid fa-folder-open"></i>
+            <li onclick="goToComplaints()">
+                <i class="fa-solid fa-folder"></i>
                 Complaints
             </li>
 
@@ -69,268 +59,189 @@
                 Users
             </li>
 
+            <li>
+                <i class="fa-solid fa-chart-line"></i>
+                Reports
+            </li>
+
+            <li>
+                <i class="fa-solid fa-layer-group"></i>
+                Categories
+            </li>
+
+            <li>
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </li>
+
         </ul>
 
     </div>
 
-    
-</div>
+    <hr>
 
-<!-- MAIN CONTENT -->
-<div class="main-content">
+    <!-- BOTTOM -->
 
-    <!-- TOPBAR -->
+    <div class="sidebar-bottom">
 
-    <div class="topbar">
+        <h4>OTHERS</h4>
 
-        <div>
-            <h2>Admin Dashboard</h2>
-            <p id="welcome"></p>
-        </div>
+        <div class="bottom-links">
 
-        <div class="top-right">
-
-            <div class="search-box">
-                <i class="fa-solid fa-search"></i>
-                <input type="text"
-                       placeholder="Search..."
-                       id="searchInput">
+            <div class="bottom-item">
+                <i class="fa-solid fa-user"></i>
+                Profile
             </div>
 
-            <div class="notification-container">
-
-    <div class="icon-btn" onclick="toggleNotifications()">
-        <i class="fa-solid fa-bell"></i>
-
-        <span class="notification-badge">
-            4
-        </span>
-    </div>
-
-    <div class="notification-dropdown"
-         id="notificationDropdown">
-
-        <div class="notification-header">
-
-            <h3>Notifications</h3>
-
-            <span>4 New</span>
+            <div class="bottom-item">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </div>
 
         </div>
 
-        <div class="notification-item unread">
-            🟢 New complaint submitted
-            <small>2 min ago</small>
-        </div>
-
-        <div class="notification-item unread">
-            🟠 Complaint pending
-            <small>10 min ago</small>
-        </div>
-
-        <div class="notification-item">
-            🔵 New user registered
-            <small>30 min ago</small>
-        </div>
-
-        <div class="notification-item">
-            🟣 Complaint resolved
-            <small>1 hour ago</small>
-        </div>
-
-        <button class="view-all-btn">
-            View All Notifications
-        </button>
-
-        </div>
-      </div>
-
-            <div class="icon-btn" onclick="toggleTheme()">
-                  <i class="fa-solid fa-moon"></i>
-           </div>
-
- <div class="profile-container">
-
-          <div class="profile-btn" onclick="toggleProfileMenu()">
-              <i class="fa-solid fa-user"></i>
-         </div>
-
-    <div class="profile-dropdown" id="profileDropdown">
-
-        <div class="profile-info">
-            <h4 id="profileName"></h4>
-            <p>Administrator</p>
-        </div>
-
-        <hr>
-
-        <button onclick="toggleTheme()">
-            🌙 Toggle Theme
-        </button>
-
-        <button>
-            ⚙ Settings
-        </button>
-
-        <button>
-            🔒 Change Password
-        </button>
-
-        <button onclick="logout()" class="logout-btn">
-            🚪 Logout
-        </button>
-
-    </div>
-</div>
-
+        <div class="system-status">
+            <h4>🛡 System Status</h4>
+            <p>● All systems operational</p>
         </div>
 
     </div>
 
-    <!-- STATS CARDS -->
+</aside>
 
-    <div class="cards">
+    <!-- MAIN -->
 
-        <div class="dashboard-card glow1">
+    <main class="main-content">
 
-            <i class="fa-solid fa-chart-column"></i>
+        <!-- TOPBAR -->
 
-            <h3 id="total">0</h3>
+        <div class="topbar">
+
+            <div>
+                <h1 class="dashboard-title">
+                    Admin Dashboard
+                </h1>
+
+                <p class="welcome-text">
+                    Welcome <span id="adminName"></span> 👋
+                </p>
+            </div>
+
+            <div class="top-actions">
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search anything...">
+                </div>
+
+                <div class="icon-btn notification-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="badge">4</span>
+                </div>
+
+                <div class="icon-btn" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+
+                <div class="profile-box">
+                    <img
+                    src="https://i.imgur.com/6VBx3io.png"
+                    alt="profile">
+
+                    <div>
+                        <h4>Admin User</h4>
+                        <p>Administrator</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats-grid">
+
+    <!-- TOTAL -->
+
+    <div class="stat-card blue">
+
+        <div class="card-info">
+
+            <h2 id="total">0</h2>
 
             <p>Total Complaints</p>
 
         </div>
 
-        <div class="dashboard-card glow2">
+        <div class="card-icon">
 
-            <i class="fa-solid fa-triangle-exclamation"></i>
+            <i class="fa-solid fa-file-lines"></i>
 
-            <h3 id="open">0</h3>
+        </div>
+
+    </div>
+
+    <!-- OPEN -->
+
+    <div class="stat-card orange">
+
+        <div class="card-info">
+
+            <h2 id="open">0</h2>
 
             <p>Open Complaints</p>
 
         </div>
 
-        <div class="dashboard-card glow3">
+        <div class="card-icon">
 
-            <i class="fa-solid fa-circle-check"></i>
+            <i class="fa-solid fa-triangle-exclamation"></i>
 
-            <h3 id="resolved">0</h3>
+        </div>
+
+    </div>
+
+    <!-- RESOLVED -->
+
+    <div class="stat-card green">
+
+        <div class="card-info">
+
+            <h2 id="resolved">0</h2>
 
             <p>Resolved Complaints</p>
 
         </div>
 
-        <div class="dashboard-card glow4">
+        <div class="card-icon">
 
-            <i class="fa-solid fa-users"></i>
+            <i class="fa-solid fa-circle-check"></i>
 
-            <h3 id="users">0</h3>
+        </div>
+
+    </div>
+
+    <!-- USERS -->
+
+    <div class="stat-card purple">
+
+        <div class="card-info">
+
+            <h2 id="users">24</h2>
 
             <p>Total Users</p>
 
         </div>
 
-    </div>
+        <div class="card-icon">
 
-    <!-- CHARTS -->
-
-    <div class="charts">
-
-        <div class="chart-box">
-
-    <div class="chart-header">
-
-        <h4>Complaint Status</h4>
-
-        <span class="chart-tag">
-            Live
-        </span>
-
-    </div>
-
-    <div class="chart-container">
-
-        <canvas id="pieChart"></canvas>
-
-    </div>
-
-</div>
-
-        <div class="chart-box">
-
-    <div class="chart-header">
-
-        <h4>Complaint Analytics</h4>
-
-        <span class="chart-tag">
-            Reports
-        </span>
-
-    </div>
-
-    <div class="chart-container">
-
-        <canvas id="barChart"></canvas>
-
-    </div>
-
-</div>
-    </div>
-
-    <!-- ACTIVITY + TABLE -->
-
-    <div class="bottom-section">
-
-        <!-- RECENT TABLE -->
-
-        <div class="table-box">
-
-            <div class="table-header">
-                <h4>Recent Complaints</h4>
-            </div>
-
-            <table class="custom-table">
-
-                <thead>
-
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Status</th>
-                </tr>
-
-                </thead>
-
-                <tbody id="recentTable">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <!-- LIVE ACTIVITY -->
-
-        <div class="activity-box">
-
-            <h4>Live Activity</h4>
-
-            <div id="activityFeed">
-
-                <div class="activity-item">
-                    🔥 Complaint #12 submitted
-                </div>
-
-                <div class="activity-item">
-                    ✅ Complaint resolved
-                </div>
-
-                <div class="activity-item">
-                    👤 New user registered
-                </div>
-
-            </div>
+            <i class="fa-solid fa-users"></i>
 
         </div>
 
@@ -338,8 +249,105 @@
 
 </div>
 
+        <!-- CHARTS -->
+
+        <div class="charts-grid">
+
+            <div class="chart-card">
+
+                <div class="card-header">
+                    <h2>Complaint Status</h2>
+
+                    <button>This Month</button>
+                </div>
+
+                <div class="chart-wrapper">
+                    <canvas id="pieChart"></canvas>
+                </div>
+
+            </div>
+
+            <div class="chart-card">
+
+                <div class="card-header">
+                    <h2>Complaint Analytics</h2>
+
+                    <button>This Month</button>
+                </div>
+
+                <div class="chart-wrapper">
+                    <canvas id="barChart"></canvas>
+                </div>
+
+            </div>
+
+            <div class="activity-card">
+
+                <div class="card-header">
+                    <h2>Recent Activity</h2>
+                    <a href="#">View All</a>
+                </div>
+
+                <div class="activity-item">
+                    <span class="dot green-dot"></span>
+                    New complaint submitted
+                </div>
+
+                <div class="activity-item">
+                    <span class="dot orange-dot"></span>
+                    Complaint pending review
+                </div>
+
+                <div class="activity-item">
+                    <span class="dot blue-dot"></span>
+                    New user registered
+                </div>
+
+                <div class="activity-item">
+                    <span class="dot purple-dot"></span>
+                    Complaint resolved
+                </div>
+
+            </div>
+
+        </div>
 
 
+        <!-- TABLE -->
+
+        <div class="table-card">
+
+            <div class="card-header">
+                <h2>Latest Complaints</h2>
+                <a href="#">View All Complaints</a>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="latestTable"></tbody>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
 
 <script src="JavaScript/admin.js"></script>
 

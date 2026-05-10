@@ -1,113 +1,43 @@
-// AUTH CHECK
-
 if(!localStorage.getItem("token")){
 
     window.location = "login.html";
 }
 
-if(localStorage.getItem("role") !== "ADMIN"){
+// NAME
 
-    window.location = "dashboard.html";
-}
-
-// WELCOME
-
-document.getElementById("welcome").innerText =
-"Welcome " + localStorage.getItem("name") + " 🚀";
+document.getElementById("adminName")
+.innerText = localStorage.getItem("name");
 
 // NAVIGATION
 
-function goDashboard(){
+function goToComplaints(){
 
-    window.location = "admin.html";
-}
-
-function goToAll(){
-
-    window.location = "admin-complaints.html";
+    window.location =
+    "admin-complaints.html";
 }
 
 function goToUsers(){
 
-    window.location = "manage-users.html";
-}
-
-function logout(){
-
-    localStorage.clear();
-
-    showToast("Logged out successfully");
-
-    setTimeout(()=>{
-
-        window.location = "login.html";
-
-    },1000);
+    window.location =
+    "manage-users.html";
 }
 
 // THEME
 
 function toggleTheme(){
 
-    document.body.classList.toggle("light");
+    document.body.classList.toggle("light-mode");
 }
 
-// TOAST
-
-function showToast(message){
-
-    const toast = document.getElementById("toast");
-
-    toast.innerText = message;
-
-    toast.style.display = "block";
-
-    setTimeout(()=>{
-
-        toast.style.display = "none";
-
-    },3000);
-}
-
-// COUNTER ANIMATION
-
-function animateValue(id,start,end,duration){
-
-    let obj = document.getElementById(id);
-
-    let range = end-start;
-
-    let current = start;
-
-    let increment = end>start ? 1 : -1;
-
-    let stepTime = Math.abs(Math.floor(duration/range));
-
-    let timer = setInterval(()=>{
-
-        current += increment;
-
-        obj.innerText = current;
-
-        if(current == end){
-
-            clearInterval(timer);
-        }
-
-    },stepTime);
-}
-
-// LOAD DASHBOARD
+// DASHBOARD DATA
 
 async function loadDashboard(){
 
     let res = await fetch(
-
         "http://localhost:8080/api/complaints/dashboard",
 
         {
             headers:{
-
                 "Authorization":
                 "Bearer " + localStorage.getItem("token")
             }
@@ -116,317 +46,162 @@ async function loadDashboard(){
 
     let data = await res.json();
 
-    animateValue("total",0,data.totalComplaints,1000);
+    document.getElementById("total")
+    .innerText = data.totalComplaints;
 
-    animateValue("open",0,data.openComplaints,1000);
+    document.getElementById("open")
+    .innerText = data.openComplaints;
 
-    animateValue("resolved",0,data.resolvedComplaints,1000);
-
-    document.getElementById("users").innerText = 24;
+    document.getElementById("resolved")
+    .innerText = data.resolvedComplaints;
 
     loadCharts(data);
-
-    loadRecentComplaints();
-
-    hideLoader();
-
-    showToast("Dashboard Loaded 🚀");
 }
 
 // CHARTS
 
 function loadCharts(data){
 
-    new Chart(document.getElementById("pieChart"), {
+    new Chart(document.getElementById("pieChart"),{
 
-    type:"doughnut",
+        type:"doughnut",
 
-    data:{
+        data:{
 
-        labels:["Open","Resolved"],
+            labels:["Open","Resolved"],
 
-        datasets:[{
+            datasets:[{
 
-            data:[
-                data.openComplaints,
-                data.resolvedComplaints
-            ],
+                data:[
+                    data.openComplaints,
+                    data.resolvedComplaints
+                ],
 
-            backgroundColor:[
-                "#f59e0b",
-                "#22c55e"
-            ],
-
-            borderWidth:0
-        }]
-    },
-
-    options:{
-
-        responsive:true,
-
-        maintainAspectRatio:false,
-
-        cutout:"70%",
-
-        plugins:{
-
-            legend:{
-
-                labels:{
-                    color:"white"
-                }
-            }
-        }
-    }
-});
-
-   new Chart(document.getElementById("barChart"), {
-
-    type:"bar",
-
-    data:{
-
-        labels:[
-            "Total",
-            "Open",
-            "Resolved"
-        ],
-
-        datasets:[{
-
-            label:"Complaints",
-
-            data:[
-
-                data.totalComplaints,
-                data.openComplaints,
-                data.resolvedComplaints
-            ],
-
-            backgroundColor:[
-                "#38bdf8",
-                "#f59e0b",
-                "#22c55e"
-            ],
-
-            borderRadius:10
-        }]
-    },
-
-    options:{
-
-        responsive:true,
-
-        maintainAspectRatio:false,
-
-        plugins:{
-
-            legend:{
-                labels:{
-                    color:"white"
-                }
-            }
+                backgroundColor:[
+                    "orange",
+                    "#2ee676"
+                ]
+            }]
         },
 
-        scales:{
-
-            y:{
-                ticks:{
-                    color:"white"
-                },
-
-                grid:{
-                    color:"rgba(255,255,255,0.1)"
-                }
-            },
-
-            x:{
-                ticks:{
-                    color:"white"
-                },
-
-                grid:{
-                    display:false
-                }
-            }
+        options:{
+            responsive:true,
+            maintainAspectRatio:false
         }
-    }
-});
-}
+    });
 
-// RECENT COMPLAINTS
+    new Chart(document.getElementById("barChart"),{
 
-async function loadRecentComplaints(){
+        type:"bar",
 
-    let res = await fetch(
+        data:{
 
-        "http://localhost:8080/api/complaints",
+            labels:[
+                "Total",
+                "Open",
+                "Resolved"
+            ],
 
-        {
-            headers:{
+            datasets:[{
 
-                "Authorization":
-                "Bearer " + localStorage.getItem("token")
-            }
+                label:"Complaints",
+
+                data:[
+                    data.totalComplaints,
+                    data.openComplaints,
+                    data.resolvedComplaints
+                ],
+
+                backgroundColor:[
+                    "#2b8cff",
+                    "orange",
+                    "#2ee676"
+                ],
+
+                borderRadius:10
+            }]
+        },
+
+        options:{
+            responsive:true,
+            maintainAspectRatio:false
         }
-    );
-
-    let data = await res.json();
-
-    let table = document.getElementById("recentTable");
-
-    table.innerHTML = "";
-
-    data.slice(0,5).forEach(c => {
-
-        table.innerHTML += `
-            <tr>
-                <td>${c.id}</td>
-                <td>${c.title}</td>
-                <td>${c.status}</td>
-            </tr>
-        `;
     });
 }
-document.getElementById("profileName").innerText =
-localStorage.getItem("name");
-
-function toggleProfileMenu(){
-
-    document
-    .getElementById("profileDropdown")
-    .classList.toggle("active");
-}
-
-function toggleNotifications(){
-
-    document
-    .getElementById("notificationDropdown")
-    .classList.toggle("active");
-}
-
-
-
-/* THEME TOGGLE */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("light-mode");
-
-    // SAVE THEME
-    if(document.body.classList.contains("light-mode")){
-
-        localStorage.setItem("theme","light");
-
-    }else{
-
-        localStorage.setItem("theme","dark");
-    }
-}
-
-/* LOAD SAVED THEME */
-
-window.addEventListener("DOMContentLoaded",()=>{
-
-    const savedTheme =
-    localStorage.getItem("theme");
-
-    if(savedTheme === "light"){
-
-        document.body.classList.add("light-mode");
-    }
-});
-// LOADER
-
-function hideLoader(){
-
-    document.getElementById("loader").style.display = "none";
-}
-
-// START
 
 loadDashboard();
 
-/* DASHBOARD SEARCH */
 
-document
-.getElementById("searchInput")
-.addEventListener("keypress", function(event){
+// 🔥 LOAD LATEST COMPLAINTS
+async function loadLatestComplaints() {
 
-    if(event.key === "Enter"){
+    try {
 
-        let value =
-        this.value.toLowerCase().trim();
+        let res = await fetch(
+            "http://localhost:8080/api/complaints",
+            {
+                headers: {
+                    "Authorization":
+                    "Bearer " + localStorage.getItem("token")
+                }
+            }
+        );
 
-        // DASHBOARD
+        let data = await res.json();
 
-        if(value.includes("dashboard")){
+        let table =
+        document.getElementById("latestTable");
 
-            window.location =
-            "admin.html";
-        }
+        table.innerHTML = "";
 
-        // COMPLAINTS
+        // latest 5 complaints
+        data.slice(-5).reverse().forEach(c => {
 
-        else if(
+            let priorityColor = "#00ff88";
 
-            value.includes("complaint") ||
+            if(c.priority === "HIGH")
+                priorityColor = "#ff4d4d";
 
-            value.includes("complaints")
-        ){
+            else if(c.priority === "MEDIUM")
+                priorityColor = "#ffb400";
 
-            window.location =
-            "admin-complaints.html";
-        }
+            let statusColor =
+                c.status === "OPEN"
+                ? "#ff4d4d"
+                : "#00ff88";
 
-        // USERS
+            table.innerHTML += `
 
-        else if(
+            <tr>
+                <td>#${c.id}</td>
 
-            value.includes("user") ||
+                <td>${c.title}</td>
 
-            value.includes("users")
-        ){
+                <td style="
+                    color:${priorityColor};
+                    font-weight:bold;
+                ">
+                    ${c.priority}
+                </td>
 
-            window.location =
-            "manage-users.html";
-        }
+                <td style="
+                    color:${statusColor};
+                    font-weight:bold;
+                ">
+                    ${c.status}
+                </td>
+            </tr>
 
-        // SETTINGS
+            `;
+        });
 
-        else if(
+    } catch(error) {
 
-            value.includes("setting") ||
-
-            value.includes("settings")
-        ){
-
-            showToast("⚙ Settings page coming soon");
-        }
-
-        // ANALYTICS
-
-        else if(
-
-            value.includes("analytics") ||
-
-            value.includes("chart")
-        ){
-
-            window.scrollTo({
-
-                top:500,
-
-                behavior:"smooth"
-            });
-        }
-
-        // UNKNOWN
-
-        else{
-
-            showToast("❌ No matching page found");
-        }
+        console.error(
+            "Latest complaint error:",
+            error
+        );
     }
-});
+}
+
+loadLatestComplaints();
