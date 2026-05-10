@@ -34,9 +34,17 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
                 // Public APIs
                 .requestMatchers(HttpMethod.POST,
-                      "/api/auth/login",
-                      "/api/auth/register"
-                 ).permitAll()
+
+                       "/api/auth/login",
+                       "/api/auth/register"
+
+                ).permitAll()
+
+                .requestMatchers(HttpMethod.GET,
+
+                       "/api/auth/total-users"
+
+                ).permitAll()
 
                 // Protected APIs
                 .anyRequest().authenticated()

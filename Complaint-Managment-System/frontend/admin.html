@@ -101,8 +101,18 @@
         </div>
 
         <div class="system-status">
-            <h4>🛡 System Status</h4>
-            <p>● All systems operational</p>
+
+            <div class="status-icon">
+               <i class="fa-solid fa-shield"></i>
+            </div>
+
+            <div>
+                 <h4>System Status</h4>
+                <p>● All systems operational</p>
+            </div>
+
+           
+            
         </div>
 
     </div>
@@ -117,25 +127,25 @@
 
         <div class="topbar">
 
-            <div>
-                <h1 class="dashboard-title">
-                    Admin Dashboard
-                </h1>
+            <div class="menu-toggle">
 
-                <p class="welcome-text">
-                    Welcome <span id="adminName"></span> 👋
-                </p>
-            </div>
+                 <i class="fa-solid fa-bars"></i>
+
+             </div>
+
+            
 
             <div class="top-actions">
 
                 <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
+                    
                     <input
                     type="text"
                     id="searchInput"
                     placeholder="Search anything...">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
                 </div>
 
                 <div class="icon-btn notification-btn">
@@ -147,21 +157,42 @@
                     <i class="fa-solid fa-moon"></i>
                 </div>
 
-                <div class="profile-box">
-                    <img
-                    src="https://i.imgur.com/6VBx3io.png"
-                    alt="profile">
+               <div class="profile-box">
 
-                    <div>
-                        <h4>Admin User</h4>
-                        <p>Administrator</p>
-                    </div>
+                   <div class="profile-avatar">
+
+                      <i class="fa-solid fa-user"></i>
+
+                   <span class="online-dot"></span>
+
                 </div>
 
+                   <div class="profile-info">
+
+                        <h4>Admin User</h4>
+
+                        <p>Administrator</p>
+
+                  </div>
+
+                <i class="fa-solid fa-angle-down"></i>
+
             </div>
+        </div>
 
         </div>
 
+        <div class="dashboard-header">
+
+               <h1 class="dashboard-title">
+                  Admin Dashboard
+                  </h1>
+
+                    <p class="welcome-text">
+                       Welcome <span id="adminName"></span> 👋
+                   </p>
+
+        </div>
 
         <!-- STATS -->
 
@@ -170,80 +201,120 @@
     <!-- TOTAL -->
 
     <div class="stat-card blue">
-
-        <div class="card-info">
-
-            <h2 id="total">0</h2>
-
-            <p>Total Complaints</p>
-
-        </div>
-
         <div class="card-icon">
 
             <i class="fa-solid fa-file-lines"></i>
 
         </div>
 
+        <div class="card-info">
+            <p>Total Complaints</p>
+
+            <h2 id="total">0</h2>
+
+            <p>All time Complaints</p>
+
+        </div>
+        <div class="growth-badge"
+id="totalGrowth">
+
+    +0%
+
+</div>
+
+<div class="mini-wave"></div>
+
+        
+
     </div>
 
     <!-- OPEN -->
 
     <div class="stat-card orange">
-
-        <div class="card-info">
-
-            <h2 id="open">0</h2>
-
-            <p>Open Complaints</p>
-
-        </div>
-
-        <div class="card-icon">
+         <div class="card-icon">
 
             <i class="fa-solid fa-triangle-exclamation"></i>
 
         </div>
+
+        <div class="card-info">
+            <p>Open Complaints</p>
+
+            <h2 id="open">0</h2>
+
+            <p>Awaiting action</p>
+
+        </div>
+        <div class="growth-badge"
+id="openGrowth">
+
+    +0%
+
+</div>
+<div class="mini-wave"></div>
+
+       
 
     </div>
 
     <!-- RESOLVED -->
 
     <div class="stat-card green">
-
-        <div class="card-info">
-
-            <h2 id="resolved">0</h2>
-
-            <p>Resolved Complaints</p>
-
-        </div>
-
         <div class="card-icon">
 
             <i class="fa-solid fa-circle-check"></i>
 
         </div>
 
+        <div class="card-info">
+            <p>Resolved Complaints</p>
+
+            <h2 id="resolved">0</h2>
+
+            <p>Successfully resolved</p>
+
+        </div>
+      <div class="growth-badge"
+id="resolvedGrowth">
+
+    +0%
+
+</div>
+
+<div class="mini-wave"></div>
+
+        
+
     </div>
 
     <!-- USERS -->
 
     <div class="stat-card purple">
-
-        <div class="card-info">
-
-            <h2 id="users">24</h2>
-
-            <p>Total Users</p>
-
-        </div>
-
         <div class="card-icon">
 
             <i class="fa-solid fa-users"></i>
 
         </div>
+
+        <div class="card-info">
+            <p>Total Users</p>
+
+            <h2 id="users">0</h2>
+
+            <p>Registered users</p>
+
+        </div>
+
+       <div class="growth-badge"
+id="userGrowth">
+
+    +0%
+
+</div>
+
+       <div class="mini-wave"></div>
+
+        
 
     </div>
 

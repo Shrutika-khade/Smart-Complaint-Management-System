@@ -111,7 +111,7 @@ linear-gradient(
 
 .sidebar-menu{
 
-    padding:25px 19px  2px;
+    padding:25px 19px  0.5px;
 
     flex:1;
 }
@@ -172,7 +172,7 @@ hr{
 
 .sidebar-bottom{
 
-    padding:15px 15px;
+    padding:10px 15px;
 }
 
 .sidebar-bottom h4{
@@ -204,6 +204,9 @@ hr{
 
     transition:0.3s;
 }
+.bottom-item i{
+    font-size: 10px;
+}
 
 .bottom-item:hover{
 
@@ -215,7 +218,7 @@ hr{
 
 .system-status{
 
-    margin-top:30px;
+    margin-top:20px;
 
     background:
     rgba(255,255,255,0.05);
@@ -223,9 +226,57 @@ hr{
     border:
     1px solid rgba(255,255,255,0.08);
 
-    padding:20px;
+    padding:15px;
 
     border-radius:22px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.system-status p{
+    color: #49f189;
+}
+
+.status-icon{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:
+    1px solid rgba(255,255,255,0.06);
+
+    background:
+    rgba(255,255,255,0.02);
+
+    box-shadow:
+    inset 0 0 12px rgba(34,197,94,0.08),
+    0 0 10px rgba(34,197,94,0.08);
+
+    font-size: 34px;
+}
+
+.status-icon i{
+
+    color:#22c55e;
+
+    font-size:12px;
+}
+
+.system-status h4{
+    font-size: 15px;
+}
+.system-status p{
+    font-size: 11px;
 }
     
 .main-content{
@@ -260,10 +311,40 @@ linear-gradient(
 
 }
 
-.dashboard-title{
-    font-size:52px;
-    font-weight:bold;
+.menu-toggle{
+
+    gap:18px;
+    margin-left:12px;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #8b5cf6
+    );
+
+    box-shadow:
+    0 0 18px rgba(139,92,246,0.45);
+
+    cursor:pointer;
+
+    transition:0.3s;
 }
+
+
+
 
 .welcome-text{
     margin-top:10px;
@@ -278,8 +359,8 @@ linear-gradient(
 }
 
 .search-box{
-    width:340px;
-    height:55px;
+    width:300px;
+    height:40px;
     background:rgba(255,255,255,0.08);
     border-radius:40px;
     display:flex;
@@ -298,8 +379,8 @@ linear-gradient(
 }
 
 .icon-btn{
-    width:50px;
-    height:50px;
+    width:40px;
+    height:40px;
     border-radius:50%;
     background:rgba(255,255,255,0.08);
     display:flex;
@@ -324,24 +405,137 @@ linear-gradient(
 }
 
 .profile-box{
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
-    background:rgba(255,255,255,0.08);
+
     padding:10px 16px;
-    border-radius:40px;
-}
 
-.profile-box img{
-    width:50px;
-    height:50px;
+    border-radius:18px;
+    margin-right: 25px;
+
+    
+    border:
+    1px ;
+
+    min-width:220px;
+
+    height:72px;
+}
+.profile-avatar{
+
+    width:40px;
+
+    height:40px;
+
     border-radius:50%;
+
+    background:
+    white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+    font-size:24px;
+
+    box-shadow:
+    0 0 18px rgba(59,130,246,0.35);
+}
+.profile-avatar i{
+
+    color:#336eed;
+
+    font-size:18px;
 }
 
-.profile-box p{
-    color:#b7c2d7;
+.online-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    position:absolute;
+
+    right:2px;
+
+    bottom:2px;
+
+    border:2px solid #0b1120;
+}
+.profile-info{
+
+    flex:1;
 }
 
+.profile-info h4{
+
+    font-size:15px;
+
+    margin:0;
+
+    color:white;
+
+    font-weight:600;
+}
+
+.profile-info p{
+
+    margin:2px 0 0;
+
+    font-size:13px;
+
+    color:#94a3b8;
+}
+.profile-box i{
+
+    color:#cbd5e1;
+
+    font-size:14px;
+}
+
+.dashboard-title{
+
+    font-size:23px;
+
+    font-weight:700;
+
+    color:white;
+
+    margin-top: -10px;
+  
+
+    margin-bottom:0.5px;
+
+    line-height:1.2;
+}
+.welcome-text{
+
+    font-size:13px;
+
+    color:#a5b4cf;
+
+    margin:0;
+
+    font-weight:400;
+}
+.dashboard-header{
+
+    padding-top:6px;
+    margin-top: -10px;
+      margin-left: 25px;
+}
 /* =========================
       PREMIUM STAT CARDS
 ========================= */
@@ -356,6 +550,8 @@ linear-gradient(
     gap:22px;
 
     margin-top:35px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .stat-card{
@@ -364,11 +560,11 @@ linear-gradient(
 
     overflow:hidden;
 
-    border-radius:24px;
+    border-radius:10px;
 
     padding:22px 24px;
 
-    height:155px;
+    height:110px;
 
     display:flex;
 
@@ -425,26 +621,51 @@ linear-gradient(
 
 .card-info p{
 
-    font-size:18px;
+    font-size:15px;
 
     color:#cfd8ff;
 
-    margin:0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+
+    padding: -2px;
+    
+}
+.card-info h2{
+    font-size: 25px;
+}
+.card-info p:first-child{
+
+    font-size:15px;
+
+    color:#d6deff;
+
+    margin-bottom:8px;
+}
+
+.card-info p:last-child{
+
+    font-size:14px;
+
+    color:#94a3b8;
+
+    margin-top:6px;
 }
 
 .card-icon{
 
-    width:90px;
-    height:90px;
+    width:50px;
+    height:50px;
 
-    border-radius:20px;
+    border-radius:50%;
 
     display:flex;
 
     align-items:center;
     justify-content:center;
 
-    font-size:42px;
+    font-size:20px;
 
     color:white;
 
@@ -473,7 +694,113 @@ backdrop-filter:blur(12px);;
     box-shadow:0 0 25px violet;
 }
 
+.growth-badge{
 
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:
+    rgba(37,99,235,0.9);
+
+    box-shadow:
+    0 0 16px rgba(37,99,235,0.35);
+}
+.orange .growth-badge{
+
+    background:#f59e0b;
+}
+
+.green .growth-badge{
+
+    background:#22c55e;
+}
+
+.purple .growth-badge{
+
+    background:#c026d3;
+}
+.mini-wave{
+
+    position:absolute;
+
+    right:18px;
+
+    bottom:18px;
+
+    width:70px;
+
+    height:34px;
+
+    opacity:0.7;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        transparent 20%,
+        rgba(37,99,235,0.9) 40%,
+        transparent 70%
+    );
+
+    clip-path:
+    polygon(
+        0% 70%,
+        15% 45%,
+        30% 55%,
+        45% 30%,
+        60% 40%,
+        75% 25%,
+        100% 10%,
+        100% 100%,
+        0% 100%
+    );
+}
+.orange .mini-wave{
+
+    background:
+    linear-gradient(
+        135deg,
+        transparent 20%,
+        rgba(245,158,11,0.9) 40%,
+        transparent 70%
+    );
+}
+
+.green .mini-wave{
+
+    background:
+    linear-gradient(
+        135deg,
+        transparent 20%,
+        rgba(34,197,94,0.9) 40%,
+        transparent 70%
+    );
+}
+
+.purple .mini-wave{
+
+    background:
+    linear-gradient(
+        135deg,
+        transparent 20%,
+        rgba(192,38,211,0.9) 40%,
+        transparent 70%
+    );
+}
 
 .charts-grid{
     margin-top:30px;

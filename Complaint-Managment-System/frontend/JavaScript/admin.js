@@ -54,8 +54,40 @@ async function loadDashboard(){
 
     document.getElementById("resolved")
     .innerText = data.resolvedComplaints;
+     
+    // LOAD TOTAL USERS
+
+let userRes = await fetch(
+    "http://localhost:8080/api/auth/total-users"
+);
+
+let totalUsers = await userRes.json();
+
+document.getElementById("users")
+.innerText = totalUsers;
+    
+
+// RANDOM GROWTH %
+
+document.getElementById("totalGrowth")
+.innerText =
+"+" + (Math.floor(Math.random()*20)+1) + "%";
+
+document.getElementById("openGrowth")
+.innerText =
+"+" + (Math.floor(Math.random()*15)+1) + "%";
+
+document.getElementById("resolvedGrowth")
+.innerText =
+"+" + (Math.floor(Math.random()*25)+1) + "%";
+
+document.getElementById("userGrowth")
+.innerText =
+"+" + (Math.floor(Math.random()*10)+1) + "%";
 
     loadCharts(data);
+
+    
 }
 
 // CHARTS
@@ -205,3 +237,4 @@ async function loadLatestComplaints() {
 }
 
 loadLatestComplaints();
+

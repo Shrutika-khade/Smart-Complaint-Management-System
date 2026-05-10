@@ -76,4 +76,10 @@ public ResponseEntity<?> login(@RequestBody User user,
 
     return ResponseEntity.ok(response);
 }
+
+@GetMapping("/total-users")
+public long getTotalUsers(){
+
+    return userRepository.count();
+}
 }
