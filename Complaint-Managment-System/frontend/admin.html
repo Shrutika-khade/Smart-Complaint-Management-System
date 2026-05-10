@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body class="dark-theme"></body>
 
 <div class="dashboard">
 
@@ -332,9 +332,77 @@ id="userGrowth">
                     <button>This Month</button>
                 </div>
 
-                <div class="chart-wrapper">
-                    <canvas id="pieChart"></canvas>
+<div class="chart-wrapper">
+
+    <div class="status-chart-layout">
+
+        <!-- DONUT -->
+        <div class="chart-container">
+
+            <canvas id="pieChart"></canvas>
+
+            <div class="chart-center">
+
+                <h1 id="totalCount">0</h1>
+                <p>Total</p>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE INFO -->
+        <div class="chart-stats">
+
+            <!-- OPEN -->
+
+            <div class="stat-item">
+
+                <div class="stat-left">
+
+                    <span class="status-dot open-dot"></span>
+
+                    <span>Open</span>
+
                 </div>
+
+                <div class="stat-right">
+
+                    <h3 id="openCount">0</h3>
+
+                    <p id="openPercent">(0%)</p>
+
+                </div>
+
+            </div>
+
+            <!-- RESOLVED -->
+
+            <div class="stat-item">
+
+                <div class="stat-left">
+
+                    <span class="status-dot resolved-dot"></span>
+
+                    <span>Resolved</span>
+
+                </div>
+
+                <div class="stat-right">
+
+                    <h3 id="resolvedCount">0</h3>
+
+                    <p id="resolvedPercent">(0%)</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+                
 
             </div>
 

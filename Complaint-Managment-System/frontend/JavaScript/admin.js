@@ -94,6 +94,34 @@ document.getElementById("userGrowth")
 
 function loadCharts(data){
 
+   // TOTAL
+let total =
+data.openComplaints +
+data.resolvedComplaints;
+
+// CENTER TOTAL
+document.getElementById("totalCount").innerText =
+total;
+
+// COUNTS
+document.getElementById("openCount").innerText =
+data.openComplaints;
+
+document.getElementById("resolvedCount").innerText =
+data.resolvedComplaints;
+
+// PERCENTAGES
+let openPercent =
+((data.openComplaints / total) * 100).toFixed(0);
+
+let resolvedPercent =
+((data.resolvedComplaints / total) * 100).toFixed(0);
+
+document.getElementById("openPercent").innerText =
+`(${openPercent}%)`;
+
+document.getElementById("resolvedPercent").innerText =
+`(${resolvedPercent}%)`;
     new Chart(document.getElementById("pieChart"),{
 
         type:"doughnut",
@@ -110,16 +138,26 @@ function loadCharts(data){
                 ],
 
                 backgroundColor:[
-                    "orange",
-                    "#2ee676"
-                ]
+                    "#ed7e0f",
+                    "#0ea949"
+                ],
+                borderWidth:0,
             }]
         },
+options:{
 
-        options:{
-            responsive:true,
-            maintainAspectRatio:false
+    responsive:true,
+
+    maintainAspectRatio:false,
+
+    cutout:'70%',
+
+    plugins:{
+        legend:{
+            display:false
         }
+    }
+}
     });
 
     new Chart(document.getElementById("barChart"),{
@@ -237,4 +275,9 @@ async function loadLatestComplaints() {
 }
 
 loadLatestComplaints();
+
+function toggleTheme(){
+
+    document.body.classList.toggle("light-mode");
+}
 

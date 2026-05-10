@@ -1,3 +1,5 @@
+
+
 *{
     margin:0;
     padding:0;
@@ -9,8 +11,8 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 
     background:
-    radial-gradient(circle at top left,#142850,#071028 40%),
-    radial-gradient(circle at bottom right,#1d2671,#071028 40%);
+    radial-gradient(circle at top left,#071e4d,#071028 40%),
+    radial-gradient(circle at bottom right,#262c5e,#071028 40%);
 
     background-color:#071028;
 
@@ -805,7 +807,10 @@ backdrop-filter:blur(12px);;
 }
 
 .charts-grid{
-    margin-top:30px;
+    margin-top:25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 2px;
     display:grid;
     grid-template-columns:1fr 1fr 350px;
     gap:20px;
@@ -816,7 +821,9 @@ backdrop-filter:blur(12px);;
 .table-card{
     background:#16213e;
     border-radius:24px;
-    padding:25px;
+    padding:20px 20px 0.5px 20px;
+    margin-bottom: 2px;
+    
 }
 
 .card-header{
@@ -824,6 +831,11 @@ backdrop-filter:blur(12px);;
     justify-content:space-between;
     align-items:center;
     margin-bottom:20px;
+    margin-top: 2px;
+}
+
+.card-header h2{
+    font-size: 15px;
 }
 
 .card-header button{
@@ -840,7 +852,8 @@ backdrop-filter:blur(12px);;
 }
 
 .chart-wrapper{
-    height:300px;
+    height:200px;
+    
 }
 
 .activity-item{
@@ -863,6 +876,210 @@ backdrop-filter:blur(12px);;
 .orange-dot{background:orange;}
 .blue-dot{background:#2f80ff;}
 .purple-dot{background:#bf5cff;}
+
+
+
+
+/* DONUT CONTAINER */
+
+.chart-container{
+
+    position: relative;
+
+    width: 150px;
+    height: 150px;
+
+    margin: auto;
+}
+
+/* CENTER TEXT */
+
+.chart-center{
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+
+    color: white;
+}
+
+.chart-center h1{
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.chart-center p{
+
+    color: #9ca3af;
+
+    font-size: 16px;
+}
+
+/* MAIN LAYOUT */
+
+.status-chart-layout{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:40px;
+
+    margin-top:20px;
+}
+
+/* CHART */
+
+.chart-container{
+
+    position:relative;
+
+    width:200px;
+    height:200px;
+}
+
+/* CENTER TEXT */
+
+.chart-center{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+    color:white;
+}
+
+.chart-center h1{
+
+    font-size:30px;
+
+    font-weight:700;
+}
+
+.chart-center p{
+
+    color:#9ca3af;
+
+    margin-top:5px;
+}
+
+/* RIGHT STATS */
+
+.chart-stats{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+    flex:1;
+}
+
+/* EACH ITEM */
+
+.stat-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:10px;
+}
+
+/* LEFT */
+
+.stat-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:rgb(239, 233, 233);
+
+    font-size:15px;
+
+    font-weight:600;
+}
+
+/* RIGHT */
+
+.stat-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding-left:26px;
+}
+
+.stat-right h3{
+
+    color:#9ca3af;
+}
+
+.stat-right p{
+
+    color:#9ca3af;
+}
+
+/* DOTS */
+
+.status-dot{
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+}
+
+/* COLORS */
+
+.open-dot{
+
+    background:orange;
+
+    box-shadow:0 0 10px orange;
+}
+
+.resolved-dot{
+
+    background:#2ee676;
+
+    box-shadow:0 0 10px #2ee676;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .status-chart-layout{
+
+        flex-direction:column;
+    }
+}
 
 .table-card{
     margin-top:30px;
@@ -932,3 +1149,57 @@ table th{
         font-size:38px;
     }
 }
+
+/* LIGHT MODE */
+
+body.light-mode{
+
+    background:#f3f7ff;
+
+    color:#111827;
+}
+
+/* CARDS */
+
+body.light-mode .chart-card,
+body.light-mode .activity-card,
+body.light-mode .stat-card,
+body.light-mode .sidebar,
+body.light-mode .topbar{
+
+    background:white;
+
+    color:#111827;
+}
+
+/* TEXT */
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode p,
+body.light-mode span,
+body.light-mode a{
+
+    color:#111827;
+}
+
+/* SECONDARY TEXT */
+
+body.light-mode .stat-right p,
+body.light-mode .card-header p{
+
+    color:#6b7280;
+}
+
+/* INPUTS */
+
+body.light-mode input{
+
+    background:#f3f4f6;
+
+    color:#111827;
+
+    border:1px solid #d1d5db;
+}
+
