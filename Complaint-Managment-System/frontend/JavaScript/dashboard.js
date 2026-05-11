@@ -1,39 +1,118 @@
-if (!localStorage.getItem("token")) {
+// ============================
+// LOGIN CHECK
+// ============================
 
-    alert("Login first ❌");
+if(!localStorage.getItem("token")){
 
-    window.location = "login.html";
+    window.location =
+    "login.html";
 }
 
-// ADMIN redirect
-if (localStorage.getItem("role") === "ADMIN") {
 
-    window.location = "admin.html";
+// ============================
+// USER NAME
+// ============================
+
+document.getElementById(
+"welcomeText"
+).innerText =
+`Welcome back, ${
+localStorage.getItem("name")
+}! 👋`;
+
+
+// ============================
+// LOAD DASHBOARD
+// ============================
+
+async function loadDashboard(){
+
+    try{
+
+        let res = await fetch(
+
+            "http://localhost:8080/api/complaints/dashboard",
+
+            {
+                headers:{
+                    "Authorization":
+                    "Bearer " +
+                    localStorage.getItem("token")
+                }
+            }
+        );
+
+        let data =
+        await res.json();
+
+        console.log(data);
+
+        // TOTAL
+
+        document.getElementById(
+        "totalComplaints"
+        ).innerText =
+        data.totalComplaints;
+
+        // RESOLVED
+
+        document.getElementById(
+        "resolvedComplaints"
+        ).innerText =
+        data.resolvedComplaints;
+
+        // OPEN / PENDING
+
+        document.getElementById(
+        "pendingComplaints"
+        ).innerText =
+        data.openComplaints;
+
+    }
+
+    catch(error){
+
+        console.log(
+        "Dashboard Error:",
+        error
+        );
+    }
 }
 
-// Welcome text
-const name = localStorage.getItem("name");
 
-document.getElementById("welcome").innerText =
-    "Welcome " + name + " 🚀";
+// CALL
 
-// Navigation
-function goToCreate() {
+loadDashboard();
 
-    window.location = "create-complaint.html";
+
+// ============================
+// NAVIGATION
+// ============================
+
+function goToCreate(){
+
+    window.location =
+    "create-complaint.html";
 }
 
-function goToMy() {
 
-    window.location = "user-complaints.html";
+function goToMy(){
+
+    window.location =
+    "user-complaints.html";
 }
 
-// Logout
-function logout() {
+
+// ============================
+// LOGOUT
+// ============================
+
+function logout(){
 
     localStorage.clear();
 
     alert("Logged out");
 
-    window.location = "login.html";
+    window.location =
+    "login.html";
 }

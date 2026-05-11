@@ -1,52 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-body{
-background: linear-gradient(135deg,#667eea,#764ba2);
-height:100vh;
-}
-</style>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>User Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+    href="CSS/dashboard.css">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="container mt-5 text-center text-white">
+    <!-- SIDEBAR -->
 
-<h2 id="welcome"></h2>
+    <aside class="sidebar">
 
-<div class="row mt-4">
+        <!-- LOGO -->
 
-<div class="col-md-4">
-<div class="card p-3">
-<h5>Create Complaint</h5>
-<button onclick="goToCreate()" class="btn btn-primary">Open</button>
-</div>
-</div>
+        <div class="logo">
 
-<div class="col-md-4">
-<div class="card p-3">
-<h5>My Complaints</h5>
-<button onclick="goToMy()" class="btn btn-success">View</button>
-</div>
-</div>
+            <div class="logo-icon">
 
-<div class="col-md-4">
-<div class="card p-3">
-<h5>Logout</h5>
-<button onclick="logout()" class="btn btn-danger">Logout</button>
-</div>
-</div>
+             <i class="fa-solid fa-comment-dots"></i>
+
+            </div>
+
+            <div>
+                <h2>Complaint</h2>
+                <p>System</p>
+            </div>
+
+        </div>
+
+        <!-- MENU -->
+
+        <nav class="menu">
+
+            <a href="#" class="active">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+            <a href="#"
+            onclick="goToCreate()">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Create Complaint
+
+            </a>
+
+            <a href="#"
+              onclick="goToMy()">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                My Complaints
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-regular fa-bell"></i>
+
+                Notifications
+
+                <span class="menu-badge">
+                    3
+                </span>
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-regular fa-circle-question"></i>
+
+                Help & Support
+
+            </a>
+
+            <div class="menu-line"></div>
+
+            <a href="#"
+onclick="logout()">
+
+    <i class="fa-solid fa-right-from-bracket"></i>
+
+    Logout
+
+</a>
+
+        </nav>
+
+        <!-- BOTTOM CARD -->
+
+        <div class="support-card">
+
+            
+
+            <div class="card-text">
+                <h3> Your voice matters!</h3>
+
+            <p>
+                We are here to listen and
+                resolve your issues.
+            </p>
+            </div>
+            
+            
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <i class="fa-solid fa-bars"></i>
+
+            <div class="notification">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <span>3</span>
+
+            </div>
+
+        </div>
+
+        <!-- HERO -->
+
+        <section class="hero-banner">
+
+            <div class="hero-left">
+
+                <h1 id="welcomeText">
+                  Welcome back 👋
+                </h1>
+
+                <p>
+                    Track, manage and get updates
+                    about your complaints.
+                </p>
+
+            </div>
+
+            <img
+            src="https://cdn-icons-png.flaticon.com/512/4727/4727424.png" alt="image">
+
+        </section>
+
+        <!-- STATS -->
+
+        <!-- STATS -->
+
+<section class="stats-grid">
+
+    <!-- TOTAL -->
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+
+            <div class="stat-icon blue">
+                <i class="fa-regular fa-file-lines"></i>
+            </div>
+
+            <div class="stat-info">
+
+                <h4>Total Complaints</h4>
+
+                <h2 id="totalComplaints">0</h2>
+
+                <p>All time</p>
+
+            </div>
+
+        </div>
+
+        <div class="wave blue-wave"></div>
+
+    </div>
+
+    <!-- RESOLVED -->
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+
+            <div class="stat-icon green">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <div class="stat-info">
+
+                <h4>Resolved</h4>
+
+                <h2 id="resolvedComplaints">0</h2>
+
+                <p>This shows resolved</p>
+
+            </div>
+
+        </div>
+
+        <div class="wave green-wave"></div>
+
+    </div>
+
+    <!-- PENDING -->
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+
+            <div class="stat-icon orange">
+                <i class="fa-regular fa-clock"></i>
+            </div>
+
+            <div class="stat-info">
+
+                <h4>Pending</h4>
+
+                <h2 id="pendingComplaints">0</h2>
+
+                <p>Waiting for action</p>
+
+            </div>
+
+        </div>
+
+        <div class="wave orange-wave"></div>
+
+    </div>
+
+    <!-- REJECTED -->
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+
+            <div class="stat-icon pink">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+
+            <div class="stat-info">
+
+                <h4>Rejected</h4>
+
+                <h2>2</h2>
+
+                <p>Not accepted</p>
+
+            </div>
+
+        </div>
+
+        <div class="wave pink-wave"></div>
+
+    </div>
+
+</section>
+
+        <!-- QUICK ACTIONS -->
+
+        <h2 class="section-title">
+            Quick Actions
+        </h2>
+
+        <section class="quick-grid">
+
+            <!-- CARD -->
+
+            <div class="quick-card gradient-blue"
+                                 onclick="goToCreate()">
+
+                <div class="quick-left">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Create Complaint</h3>
+
+                        <p>
+                            Raise a new complaint quickly
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <i class="fa-solid fa-angle-right"></i>
+
+            </div>
+
+            <!-- CARD -->
+
+            <div class="quick-card gradient-green"
+                                 onclick="goToMy()">
+
+                <div class="quick-left">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-regular fa-file-lines"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>My Complaints</h3>
+
+                        <p>
+                            View and track complaints
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <i class="fa-solid fa-angle-right"></i>
+
+            </div>
+
+            <!-- CARD -->
+
+            <div class="quick-card gradient-purple">
+
+                <div class="quick-left">
+
+                    <div class="quick-icon">
+
+                        <i class="fa-regular fa-message"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Help & Support</h3>
+
+                        <p>
+                            Get support for your issues
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <i class="fa-solid fa-angle-right"></i>
+
+            </div>
+
+        </section>
+       <div class="bottom-layout">
+
+    <!-- LEFT -->
+
+    <div class="recent-card">
+
+        <div class="recent-header">
+
+            <h2>
+                Recent Complaints
+            </h2>
+
+            <a href="#">
+                View All
+            </a>
+
+        </div>
+
+        <!-- ITEM -->
+
+        <div class="recent-item">
+
+            <div class="recent-left">
+
+                <div class="recent-icon blue-bg">
+
+                    <i class="fa-solid fa-wifi"></i>
+
+                </div>
+
+                <div>
+
+                    <h4>
+                        Internet Connection Issue
+                    </h4>
+
+                    <p>
+                        Internet disconnecting frequently.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <span class="pending-status">
+                Pending
+            </span>
+
+        </div>
+
+        <!-- ITEM -->
+
+        <div class="recent-item">
+
+            <div class="recent-left">
+
+                <div class="recent-icon green-bg">
+
+                    <i class="fa-regular fa-lightbulb"></i>
+
+                </div>
+
+                <div>
+
+                    <h4>
+                        Classroom Light Problem
+                    </h4>
+
+                    <p>
+                        Lights not working properly.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <span class="resolved-status">
+                Resolved
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="side-cards">
+
+        <!-- OVERVIEW -->
+
+        <div class="mini-card">
+
+            <h3>
+                Complaint Overview
+            </h3>
+
+            <div class="mini-circle">
+                17
+            </div>
+
+        </div>
+
+        <!-- UPDATE -->
+
+        <div class="mini-card">
+
+            <h3>
+                Stay Updated
+            </h3>
+
+            <p>
+                Enable notifications
+                for complaint updates.
+            </p>
+
+            <button>
+                Enable
+            </button>
+
+        </div>
+
+        <!-- QUOTE -->
+
+        <div class="mini-card quote-mini">
+
+            <h3>
+                Motivational Quote
+            </h3>
+
+            <p>
+                Every complaint is a step
+                towards improvement.
+            </p>
+
+        </div>
+
+    </div>
 
 </div>
+        
 
-</div>
+
+
+    </main>
 
 <script src="JavaScript/dashboard.js"></script>
 
