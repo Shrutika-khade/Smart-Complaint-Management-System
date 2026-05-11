@@ -1,0 +1,230 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:
+    radial-gradient(circle at top left,#071e4d,#071028 40%),
+    radial-gradient(circle at bottom right,#262c5e,#071028 40%);
+
+    color:white;
+
+    padding:35px;
+}
+
+/* PAGE HEADER */
+
+.page-header{
+
+    margin-bottom:30px;
+}
+
+.page-header h1{
+
+    font-size:40px;
+
+    margin-bottom:10px;
+}
+
+.page-header p{
+
+    color:#9ca3af;
+
+    font-size:16px;
+}
+
+/* SEARCH */
+
+.search-wrapper{
+
+    margin-bottom:25px;
+}
+
+.search-box{
+
+    width:340px;
+
+    padding:15px 20px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#121c3c;
+
+    color:white;
+
+    outline:none;
+
+    font-size:15px;
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+/* TABLE CONTAINER */
+
+.table-container{
+
+    background:#121c3c;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* TABLE */
+
+.complaint-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+}
+
+/* TABLE HEADER */
+
+.complaint-table thead{
+
+    background:rgba(255,255,255,0.04);
+}
+
+.complaint-table th{
+
+    padding:22px;
+
+    text-align:left;
+
+    color:#dbe4ff;
+
+    font-size:15px;
+
+    font-weight:600;
+}
+
+/* TABLE DATA */
+
+.complaint-table td{
+
+    padding:22px;
+
+    border-top:
+    1px solid rgba(255,255,255,0.05);
+
+    font-size:15px;
+}
+
+/* ROW HOVER */
+
+.complaint-table tbody tr{
+
+    transition:0.3s;
+}
+
+.complaint-table tbody tr:hover{
+
+    background:
+    rgba(255,255,255,0.03);
+}
+
+/* PRIORITY COLORS */
+
+.high{
+
+    color:#ef4444;
+
+    font-weight:700;
+}
+
+.medium{
+
+    color:#f59e0b;
+
+    font-weight:700;
+}
+
+.low{
+
+    color:#22c55e;
+
+    font-weight:700;
+}
+
+/* STATUS */
+
+.open{
+
+    color:#f59e0b;
+
+    font-weight:700;
+}
+
+.resolved{
+
+    color:#22c55e;
+
+    font-weight:700;
+}
+
+/* BUTTONS */
+
+.resolve-btn{
+
+    background:#1d4ed8;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.resolve-btn:hover{
+
+    background:#2563eb;
+}
+
+.done-btn{
+
+    background:#16a34a;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .table-container{
+
+        overflow-x:auto;
+    }
+
+    .complaint-table{
+
+        min-width:900px;
+    }
+}

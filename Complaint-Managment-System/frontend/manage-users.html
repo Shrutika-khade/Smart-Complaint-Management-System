@@ -1,34 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
     <title>Manage Users</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+    href="CSS/manage-users.css">
+
 </head>
+
 <body>
 
-<h2>All Users</h2>
+    <!-- PAGE HEADER -->
 
-<div class="search-wrapper">
-    <input type="text"
-    id="userSearch"
-    placeholder="Search users...">
-</div>
+    <div class="page-header">
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody id="userTable"></tbody>
-</table>
+        <h1>All Users</h1>
 
-<script src="JavaScript/manage-users.js"></script>
+        <p>
+            Manage registered system users
+        </p>
+
+    </div>
+
+    <!-- SEARCH -->
+
+    <div class="search-wrapper">
+
+        <input
+        type="text"
+
+        id="userSearch"
+
+        placeholder="Search users..."
+
+        class="search-box">
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-container">
+
+        <table class="user-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Role</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="userTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- JS -->
+
+    <script src="JavaScript/manage-users.js"></script>
 
 </body>
+
 </html>
