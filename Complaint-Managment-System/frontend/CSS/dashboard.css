@@ -130,7 +130,7 @@ background:
 
     gap:15px;
 
-    margin-top: -120px;
+    
      
 }
 
@@ -155,6 +155,8 @@ background:
     transition:0.3s;
 
     font-size: 15px;
+
+    
 }
 
 .menu a:hover,
@@ -208,7 +210,7 @@ background:
 
 .card-text{
 
-    margin-top:60px;
+    
 
     background:
     rgba(255, 255, 255, 0.12);
@@ -391,7 +393,7 @@ background:
 
     overflow:hidden;
 
-    min-height:170px;
+    min-height:110px;
 
     box-shadow:
     0 8px 25px rgba(0,0,0,0.04);
@@ -530,6 +532,8 @@ background:
 .section-title{
 
     margin-bottom:18px;
+    margin: 15px;
+    font-size: 10px;
 
     color:#111827;
 }
@@ -538,20 +542,24 @@ background:
 
     display:grid;
 
-    grid-template-columns:1fr 1fr 1fr;
+    grid-template-columns:
+    repeat(3, 1fr);
 
     gap:18px;
 
     margin-top:10px;
+
+    width:68%;
 }
 
 .quick-card{
 
-    border-radius:22px;
+    border-radius:15px;
 
-    padding:20px;
+    padding:10px;
 
     min-height:110px;
+    width: 250px;
 
     transition:0.3s;
 
@@ -562,6 +570,7 @@ background:
     justify-content:space-between;
 
     align-items:center;
+    min-height: 90px;
 }
 
 .quick-card:hover{
@@ -610,9 +619,9 @@ background:
 
 .quick-icon{
 
-    width:60px;
+    width:45px;
 
-    height:60px;
+    height:45px;
 
     border-radius:18px;
 
@@ -627,7 +636,13 @@ background:
 
     font-size:24px;
 }
-
+.quick-left h3{
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+.quick-left p{
+    font-size: 11px;
+}
 /* =========================
    BOTTOM SECTION
 ========================= */
@@ -800,7 +815,7 @@ background:
 
 /* MINI CARD */
 
-.mini-card{
+.mini-card1{
 
     background:white;
 
@@ -810,6 +825,34 @@ background:
 
     box-shadow:
     0 6px 20px rgba(0,0,0,0.04);
+
+    margin-top: -130px;
+}
+.mini-card2{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:18px;
+
+    box-shadow:
+    0 6px 20px rgba(0,0,0,0.04);
+
+    
+}
+.mini-card3{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:18px;
+
+    box-shadow:
+    0 6px 20px rgba(0,0,0,0.04);
+
+
 }
 
 /* CIRCLE */
@@ -1008,4 +1051,20 @@ background:
 .quote-mini{
 
     padding-bottom:28px;
+}
+
+/* MIDDLE SECTION */
+
+.middle-layout{
+
+    display:grid;
+
+    grid-template-columns:
+    2.2fr 1fr;
+
+    gap:20px;
+
+    align-items:start;
+
+    margin-top:20px;
 }

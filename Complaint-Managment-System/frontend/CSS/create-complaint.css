@@ -225,11 +225,13 @@ body{
     align-items:center;
 
     margin-bottom:30px;
+
+    margin-top: -20px;
 }
 
 .menu-icon{
 
-    font-size:32px;
+    font-size:20px;
 
     color:#1e1b4b;
 }
