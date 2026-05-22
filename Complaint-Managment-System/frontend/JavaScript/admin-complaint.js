@@ -7,9 +7,11 @@ let allComplaints = [];
 async function loadComplaints() {
 
     let res = await fetch(API,{
+
         headers:{
             "Authorization":
-            "Bearer " + localStorage.getItem("token")
+            "Bearer " +
+            localStorage.getItem("token")
         }
     });
 
@@ -25,37 +27,108 @@ async function loadComplaints() {
 function renderComplaints(data){
 
     let table =
-    document.getElementById("complaintTable");
+    document.getElementById(
+    "complaintTable"
+    );
 
     table.innerHTML = "";
 
     data.forEach(c => {
 
         let row = `
+
             <tr>
+
                 <td>${c.id}</td>
+
                 <td>${c.title}</td>
+
                 <td>${c.description}</td>
 
-                <td style="color:${getColor(c.priority)}">
+                <td style="
+                    color:${getColor(c.priority)};
+                    font-weight:bold;
+                ">
                     ${c.priority}
                 </td>
 
-                <td style="color:${getStatusColor(c.status)}">
+                <td style="
+                    color:${getStatusColor(c.status)};
+                    font-weight:bold;
+                ">
                     ${c.status}
                 </td>
 
                 <td>
+
                     ${
                         c.status === "OPEN"
-                        ? `<button onclick="updateStatus(${c.id})">
-                           Resolve
-                           </button>`
-                        : `<span style="color:lime">
-                           ✔ Done
-                           </span>`
+
+                        ?
+
+                        `
+
+                        <button
+                        class="resolve-btn"
+
+                        onclick="updateStatus(
+                        ${c.id},
+                        'RESOLVED'
+                        )">
+
+                            Resolve
+
+                        </button>
+
+                        <button
+                        class="reject-btn"
+
+                        onclick="updateStatus(
+                        ${c.id},
+                        'REJECTED'
+                        )">
+
+                            Reject
+
+                        </button>
+
+                        `
+
+                        :
+
+                        c.status === "RESOLVED"
+
+                        ?
+
+                        `
+
+                        <span style="
+                        color:lime;
+                        font-weight:bold;">
+
+                            ✔ Resolved
+
+                        </span>
+
+                        `
+
+                        :
+
+                        `
+
+                        <span style="
+                        color:#ec4899;
+                        font-weight:bold;">
+
+                            ✖ Rejected
+
+                        </span>
+
+                        `
                     }
+
                 </td>
+
             </tr>
         `;
 
@@ -65,8 +138,14 @@ function renderComplaints(data){
 
 /* SEARCH */
 
-document.getElementById("complaintSearch")
-.addEventListener("keyup", function(){
+document.getElementById(
+"complaintSearch"
+)
+
+.addEventListener(
+"keyup",
+
+function(){
 
     let value =
     this.value.toLowerCase();
@@ -74,49 +153,78 @@ document.getElementById("complaintSearch")
     let filtered =
     allComplaints.filter(c =>
 
-        c.title.toLowerCase().includes(value) ||
+        c.title
+        .toLowerCase()
+        .includes(value)
 
-        c.description.toLowerCase().includes(value) ||
+        ||
 
-        c.status.toLowerCase().includes(value)
+        c.description
+        .toLowerCase()
+        .includes(value)
+
+        ||
+
+        c.status
+        .toLowerCase()
+        .includes(value)
     );
 
     renderComplaints(filtered);
 });
 
-/* COLORS */
+/* PRIORITY COLORS */
 
 function getColor(priority){
 
-    if(priority === "HIGH") return "red";
+    if(priority === "HIGH")
+    return "red";
 
-    if(priority === "MEDIUM") return "orange";
+    if(priority === "MEDIUM")
+    return "orange";
 
     return "lime";
 }
+
+/* STATUS COLORS */
 
 function getStatusColor(status){
 
-    if(status === "OPEN") return "orange";
+    if(status === "OPEN")
+    return "orange";
+
+    if(status === "REJECTED")
+    return "#ec4899";
 
     return "lime";
 }
 
-/* UPDATE */
+/* UPDATE STATUS */
 
-async function updateStatus(id){
+async function updateStatus(
+    id,
+    status
+){
 
-    await fetch(`${API}/${id}/status?status=RESOLVED`,{
+    await fetch(
 
-        method:"PUT",
+        `${API}/${id}/status?status=${status}`,
 
-        headers:{
-            "Authorization":
-            "Bearer " + localStorage.getItem("token")
+        {
+
+            method:"PUT",
+
+            headers:{
+                "Authorization":
+                "Bearer " +
+                localStorage.getItem("token")
+            }
         }
-    });
+    );
 
     loadComplaints();
 }
+
+/* INITIAL LOAD */
 
 loadComplaints();

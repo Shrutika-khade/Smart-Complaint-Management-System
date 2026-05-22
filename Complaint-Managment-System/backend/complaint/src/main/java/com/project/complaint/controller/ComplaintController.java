@@ -57,20 +57,77 @@ public Complaint updateStatus(@PathVariable Long id,
 
    // DASHBOARD DATA
    @GetMapping("/dashboard")
-   public DashboardResponse getDashboard() {
-     return complaintService.getDashboardData();
-   }
+public DashboardResponse
+getDashboard(
+        Principal principal
+) {
 
+    return complaintService
+            .getDashboardData(
+                    principal.getName()
+            );
+}
     // DEPARTMENT complaints
    @GetMapping("/department/{deptId}")
    public List<Complaint> getDepartmentComplaints(@PathVariable Long deptId) {
     return complaintService.getComplaintsByDepartment(deptId);
    }
-  @PostMapping
-public Complaint createComplaint(@RequestBody Complaint complaint) {
+   
 
-    // TEMP FIX: userId = 1 (manual user)
-    return complaintService.createComplaint(complaint, 1L);
+   @PostMapping
+public Complaint createComplaint(
+        @RequestBody Complaint complaint,
+        Principal principal
+) {
+
+    return complaintService
+       .createComplaintByEmail(
+            complaint,
+            principal.getName()
+       );
 }
 
+@GetMapping("/admin-dashboard")
+public DashboardResponse
+getAdminDashboard() {
+
+    long total =
+    complaintService
+    .getAllComplaints()
+    .size();
+
+    long open =
+    complaintService
+    .getAllComplaints()
+    .stream()
+    .filter(c ->
+        c.getStatus()
+        .equals("OPEN"))
+    .count();
+
+    long resolved =
+    complaintService
+    .getAllComplaints()
+    .stream()
+    .filter(c ->
+        c.getStatus()
+        .equals("RESOLVED"))
+    .count();
+
+    long rejected =
+    complaintService
+    .getAllComplaints()
+    .stream()
+    .filter(c ->
+        c.getStatus()
+        .equals("REJECTED"))
+    .count();
+
+    return new DashboardResponse(
+            total,
+            open,
+            resolved,
+            rejected
+    );
+}
 }

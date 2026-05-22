@@ -135,14 +135,48 @@ public class ComplaintService {
     complaintRepository.delete(complaint);
     }
 
-    public DashboardResponse getDashboardData() {
+    public DashboardResponse
+getDashboardData(String email) {
 
-    long total = complaintRepository.count();
-    long open = complaintRepository.countByStatus("OPEN");
-    long resolved = complaintRepository.countByStatus("RESOLVED");
+    User user =
+    userRepository.findByEmail(email)
+            .orElseThrow(() ->
+            new RuntimeException(
+            "User not found"));
 
-    return new DashboardResponse(total, open, resolved);
-    }
+    long total =
+    complaintRepository
+    .countByUserId(user.getId());
+
+    long open =
+    complaintRepository
+    .countByUserIdAndStatus(
+            user.getId(),
+            "OPEN"
+    );
+
+    long resolved =
+    complaintRepository
+    .countByUserIdAndStatus(
+            user.getId(),
+            "RESOLVED"
+    );
+
+    long rejected =
+    complaintRepository
+    .countByUserIdAndStatus(
+            user.getId(),
+            "REJECTED"
+    );
+
+    return new DashboardResponse(
+            total,
+            open,
+            resolved,
+            rejected
+    );
+
+}
     // USER wise complaints
     public List<Complaint> getComplaintsByUser(Long userId) {
     return complaintRepository.findByUserId(userId);

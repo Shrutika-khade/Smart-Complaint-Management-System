@@ -68,6 +68,43 @@ async function loadDashboard(){
         ).innerText =
         data.openComplaints;
 
+        document.getElementById(
+"rejectedComplaints"
+).innerText =
+data.rejectedComplaints;
+
+       // OVERVIEW TOTAL
+
+document.getElementById(
+"overviewTotal"
+).innerText =
+data.totalComplaints;
+
+document.getElementById(
+"overviewTotalCount"
+).innerText =
+data.totalComplaints;
+// OVERVIEW RESOLVED
+
+document.getElementById(
+"overviewResolved"
+).innerText =
+data.resolvedComplaints;
+
+// OVERVIEW REJECTED
+
+document.getElementById(
+"overviewRejected"
+).innerText =
+data.rejectedComplaints;
+
+// OVERVIEW PENDING
+
+document.getElementById(
+"overviewPending"
+).innerText =
+data.openComplaints;
+
     }
 
     catch(error){
@@ -116,3 +153,4 @@ function logout(){
     window.location =
     "login.html";
 }
+

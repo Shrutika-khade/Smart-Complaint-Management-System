@@ -209,7 +209,7 @@ onclick="logout()">
         <div class="stat-top">
 
             <div class="stat-icon green">
-                <i class="fa-solid fa-check"></i>
+                <i class="fa-solid fa-circle-check"></i>
             </div>
 
             <div class="stat-info">
@@ -268,7 +268,7 @@ onclick="logout()">
 
                 <h4>Rejected</h4>
 
-                <h2>2</h2>
+                <h2 id="rejectedComplaints">0</h2>
 
                 <p>Not accepted</p>
 
@@ -283,6 +283,7 @@ onclick="logout()">
 </section>
 
         <!-- QUICK ACTIONS -->
+    <div class="main-content-box">
          <div class="section-title">
 
         <h2 >
@@ -380,8 +381,9 @@ onclick="logout()">
             </div>
 
         </section>
+    </div>
 
-        </div>
+        
        <div class="bottom-layout">
 
     <!-- LEFT -->
@@ -474,49 +476,149 @@ onclick="logout()">
 
         <div class="mini-card1">
 
-            <h3>
-                Complaint Overview
-            </h3>
+    <h3>
+        Complaint Overview
+    </h3>
 
-            <div class="mini-circle">
-                17
+    <div class="overview-wrapper">
+
+        <!-- DONUT -->
+
+        <div class="donut-chart">
+
+            <div class="donut-center">
+
+                <h2 id="overviewTotal">0</h2>
+
+                <p>Total</p>
+
             </div>
 
         </div>
 
+        <!-- LEGENDS -->
+
+        <div class="overview-stats">
+
+            <div class="overview-item">
+
+    <span class="dot blue"></span>
+
+    Total
+
+    <b id="overviewTotalCount">0</b>
+
+</div>
+
+<div class="overview-item">
+
+    <span class="dot green"></span>
+
+    Resolved
+
+    <b id="overviewResolved">0</b>
+
+</div>
+
+<div class="overview-item">
+
+    <span class="dot orange"></span>
+
+    Pending
+
+    <b id="overviewPending">0</b>
+
+</div>
+
+<div class="overview-item">
+
+    <span class="dot pink"></span>
+
+    Rejected
+
+    <b id="overviewRejected">0</b>
+
+</div>
+
+        </div>
+
+    </div>
+
+</div>
+
         <!-- UPDATE -->
 
-        <div class="mini-card2">
+        <!-- UPDATE -->
 
-            <h3>
-                Stay Updated
-            </h3>
+<div class="mini-card2">
+
+    <h3>
+        Stay Updated
+    </h3>
+
+    <div class="update-content">
+
+        <!-- ICON -->
+
+        <div class="notify-icon">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </div>
+
+        <!-- TEXT + BUTTON -->
+
+        <div class="update-info">
 
             <p>
-                Enable notifications
-                for complaint updates.
+                Enable notifications to get
+                real-time updates about your
+                complaints.
             </p>
 
             <button>
-                Enable
+                Enable Notifications
             </button>
 
         </div>
 
+    </div>
+
+</div>
         <!-- QUOTE -->
 
-        <div class="mini-card3 quote-mini">
+       <div class="mini-card3 quote-mini">
 
-            <h3>
-                Motivational Quote
-            </h3>
+    <h3>
+        Motivational Quote
+    </h3>
 
-            <p>
-                Every complaint is a step
-                towards improvement.
-            </p>
+    <div class="quote-layout">
+
+        <!-- START QUOTE -->
+
+        <span class="quote-start">“</span>
+
+        <!-- TEXT -->
+
+        <p>
+            Every complaint is a step towards
+            a better and improved environment.
+        </p>
+
+        <!-- END -->
+
+        <div class="quote-end-box">
+
+            <span class="quote-end">”</span>
+
+            <span class="heart">❤</span>
 
         </div>
+
+    </div>
+
+</div>
 
     </div>
 

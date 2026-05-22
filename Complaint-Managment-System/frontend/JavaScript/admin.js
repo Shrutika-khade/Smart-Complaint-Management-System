@@ -34,7 +34,7 @@ function toggleTheme(){
 async function loadDashboard(){
 
     let res = await fetch(
-        "http://localhost:8080/api/complaints/dashboard",
+        "http://localhost:8080/api/complaints/admin-dashboard",
 
         {
             headers:{
