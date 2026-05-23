@@ -130,4 +130,15 @@ getAdminDashboard() {
             rejected
     );
 }
+@GetMapping("/my")
+public List<Complaint> getMyComplaints(
+        Principal principal
+) {
+
+    return complaintService
+            .getComplaintsByEmail(
+                    principal.getName()
+            );
+}
+
 }

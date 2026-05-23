@@ -11,6 +11,7 @@ import com.project.complaint.entity.User;
 import com.project.complaint.repository.UserRepository;
 import com.project.complaint.model.Complaint;
 
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -195,6 +196,19 @@ getDashboardData(String email) {
     return complaintRepository.save(c);
 }
 
+public List<Complaint>
+getComplaintsByEmail(String email){
 
+    User user =
+    userRepository.findByEmail(email)
+    .orElseThrow(() ->
+    new RuntimeException(
+    "User not found"));
+
+    return complaintRepository
+            .findByUserId(
+                    user.getId()
+            );
+}
 
 }
