@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadDepartments();
 
+    document.getElementById(
+"profileName"
+).innerText =
+localStorage.getItem("name");
+
     const form = document.getElementById("complaintForm");
 
     form.addEventListener("submit", async function (e) {

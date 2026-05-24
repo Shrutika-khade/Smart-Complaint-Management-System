@@ -75,7 +75,7 @@
 
             Notifications
 
-            <span class="badge">3</span>
+            <span class="menu-badge">3</span>
 
         </a>
 
@@ -87,30 +87,38 @@
 
         </a>
 
-        <a href="#"
-        onclick="logout()">
+        <div class="menu-line"></div>
 
-            <i class="fa-solid fa-right-from-bracket"></i>
+            <a href="#"
+onclick="logout()">
 
-            Logout
+    <i class="fa-solid fa-right-from-bracket"></i>
 
-        </a>
+    Logout
+
+</a>
+
 
     </div>
 
     <!-- BOTTOM CARD -->
 
-    <div class="sidebar-card">
+    <div class="support-card">
 
-    
+            
 
-        <h3>Your voice</h3>
+            <div class="card-text">
+                <h3> Your voice matters!</h3>
 
-        <p>
-            Matters to us
-        </p>
+            <p>
+                We are here to listen and
+                resolve your issues.
+            </p>
+            </div>
+            
+            
 
-    </div>
+        </div>
 
 </div>
 
@@ -134,16 +142,25 @@
 
             </div>
 
-            <div class="profile">
+            <div class="profile-section">
 
-                <img src=
-"https://cdn-icons-png.flaticon.com/512/6997/6997662.png" alt=""image>
+    <!-- PROFILE ICON -->
 
-                <span id="userName">
-                    Priya Verma
-                </span>
+    <div class="profile-box">
 
-            </div>
+        <i class="fa-solid fa-user"></i>
+
+    </div>
+
+    <!-- USER NAME -->
+
+    <div class="profile-info">
+
+        <h3 id="profileName"></h3>
+
+    </div>
+
+</div>
 
         </div>
 
@@ -158,6 +175,7 @@
         <p>
             Dashboard /
             Create Complaint
+            
         </p>
 
     </div>
@@ -238,26 +256,7 @@
 
                 <select id="department"  title="sidebar">
 
-                    <option>
-                        Select Department
-                    </option>
-
-                    <option>
-                        IT Department
-                    </option>
-
-                    <option>
-                        Library
-                    </option>
-
-                    <option>
-                        Classroom
-                    </option>
-
-                    <option>
-                        Laboratory
-                    </option>
-
+                    
                 </select>
 
             </div>

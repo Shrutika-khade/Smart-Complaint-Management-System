@@ -12,7 +12,7 @@ body{
 
     font-family:Arial, Helvetica, sans-serif;
 
-    background:#f4f6fb;
+    background:#edeef7;
 
     display:flex;
 }
@@ -23,16 +23,16 @@ body{
 
 .sidebar{
 
-    width:280px;
+    width:240px;
 
     min-height:100vh;
 
     background:
     linear-gradient(
     180deg,
-    #4f46e5,
-    #6d28d9,
-    #2563eb
+    #4f46e5 0%,
+    #6d28d9 55%,
+    #2563eb 100%
     );
 
     padding:25px 20px;
@@ -56,23 +56,37 @@ body{
 
     gap:14px;
 
-    padding:16px;
+    margin-bottom:20px;
 
-    border-radius:24px;
+    margin-top: -20px;
 
-    background:
-    rgba(255,255,255,0.08);
+    margin-left: -18px;
+    margin-right: -18px;
 
-    margin-bottom:35px;
+    padding-left: 25px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+
+    
+background:
+    linear-gradient(
+    135deg,
+    rgba(68,32,255,0.95),
+    rgba(79,70,229,0.85)
+    );
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.15);
 }
 
 .logo-icon{
 
-    width:65px;
+    width:50px;
 
-    height:65px;
+    height:50px;
 
-    border-radius:20px;
+    border-radius:10px;
 
     background:white;
 
@@ -81,6 +95,9 @@ body{
     justify-content:center;
 
     align-items:center;
+
+    box-shadow:
+    0 10px 25px rgba(255,255,255,0.15);
 }
 
 .logo-icon i{
@@ -93,15 +110,16 @@ body{
 .logo h2{
 
     font-size:20px;
+
+    font-weight:700;
 }
 
 .logo p{
 
     opacity:0.8;
 
-    margin-top:4px;
+    margin-top:2px;
 }
-
 /* MENU */
 
 .menu{
@@ -110,7 +128,10 @@ body{
 
     flex-direction:column;
 
-    gap:12px;
+    gap:15px;
+
+     
+     
 }
 
 .menu a{
@@ -119,21 +140,23 @@ body{
 
     color:white;
 
-    padding:18px 20px;
+    padding:10px;
 
-    border-radius:20px;
+    border-radius:18px;
 
     display:flex;
 
     align-items:center;
 
-    gap:14px;
+    gap:15px;
 
-    font-size:18px;
+    position:relative;
 
     transition:0.3s;
 
-    position:relative;
+    font-size: 15px;
+
+    
 }
 
 .menu a:hover,
@@ -143,19 +166,36 @@ body{
     rgba(255,255,255,0.18);
 }
 
-.badge{
+.menu-line{
+
+    width:100%;
+
+    height:1.5px;
+
+    
+
+    border:none;
+
+    background:
+    rgba(255,255,255,0.18);
+
+    box-shadow:
+    0 0 8px rgba(255,255,255,0.08);
+}
+
+.menu-badge{
 
     position:absolute;
 
-    right:18px;
-
-    width:28px;
-
-    height:28px;
-
-    border-radius:50%;
+    right:20px;
 
     background:#ff4da6;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
 
     display:flex;
 
@@ -163,42 +203,45 @@ body{
 
     align-items:center;
 
-    font-size:13px;
+    font-size:10px;
 }
 
-/* SIDEBAR CARD */
 
-.sidebar-card{
+/* SUPPORT CARD */
 
-    margin-top:40px;
+.card-text{
+
+    
 
     background:
-    rgba(255,255,255,0.12);
+    rgba(255, 255, 255, 0.12);
 
-    border-radius:28px;
+    border-radius:20px;
 
-    padding:20px;
+    padding:15px;
 
     text-align:center;
+
+    margin-top: 190px;
 }
 
-.sidebar-card img{
-
-    width:170px;
-
-    margin-bottom:10px;
+.card-text h3{
+    font-size: 15px;
+}
+.card-text p{
+    font-size: 11px;
 }
 
-.sidebar-card h3{
 
-    font-size:32px;
+
+.support-card h3{
+
+    margin-bottom:12px;
 }
 
-.sidebar-card p{
+.support-card p{
 
-    margin-top:8px;
-
-    opacity:0.9;
+    line-height:1.6;
 }
 
 /* =========================
@@ -231,7 +274,9 @@ body{
 
 .menu-icon{
 
-    font-size:20px;
+    margin-left: -45px;
+
+    font-size:17px;
 
     color:#1e1b4b;
 }
@@ -242,7 +287,7 @@ body{
 
     align-items:center;
 
-    gap:25px;
+    gap:35px;
 }
 
 /* NOTIFICATION */
@@ -251,7 +296,7 @@ body{
 
     position:relative;
 
-    font-size:24px;
+    font-size:20px;
 }
 
 .notification span{
@@ -262,9 +307,9 @@ body{
 
     right:-12px;
 
-    width:22px;
+    width:15px;
 
-    height:22px;
+    height:15px;
 
     border-radius:50%;
 
@@ -280,32 +325,54 @@ body{
 
     font-size:12px;
 }
-
-/* PROFILE */
-
-.profile{
+.profile-section{
 
     display:flex;
 
     align-items:center;
 
-    gap:12px;
+    gap:15px;
 }
 
-.profile img{
+.profile-box{
 
-    width:45px;
+    width:30px;
 
-    height:45px;
+    height:30px;
 
     border-radius:50%;
+
+    background:
+    linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:
+    0 8px 20px rgba(99,102,241,0.22);
 }
 
-.profile span{
+.profile-box i{
 
-    font-size:18px;
+    color:white;
 
-    font-weight:600;
+    font-size:15px;
+}
+
+.profile-info h3{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#111827;
 }
 
 /* PAGE TITLE */
@@ -313,22 +380,28 @@ body{
 .page-title{
 
     margin-bottom:25px;
+
+    margin-left: -20px;
+    margin-top: -15px;
 }
 
 .page-title h1{
 
-    font-size:42px;
+    font-size:30px;
 
     color:#111827;
 
-    margin-bottom:10px;
+    margin-bottom:5px;
 }
 
 .page-title p{
 
-    color:#6b7280;
+    color:#1e64ee;
 
-    font-size:17px;
+    font-size:15px;
+
+    font-weight:700;
+    
 }
 
 /* =========================
@@ -339,12 +412,21 @@ body{
 
     background:white;
 
-    border-radius:35px;
+    border-radius:10px;
 
-    padding:35px;
+    
+
+    padding-top: 30px;
+
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
 
     box-shadow:
     0 15px 40px rgba(0,0,0,0.06);
+
+    margin-left: -20px;
+    margin-top: -10px;
 }
 
 /* HEADER */
@@ -357,23 +439,25 @@ body{
 
     gap:18px;
 
-    margin-bottom:30px;
+    margin-bottom:20px;
 
     padding-bottom:25px;
 
     border-bottom:
     2px solid #eef2ff;
+
+    margin-top: -15px;
 }
 
 .form-icon{
 
-    width:70px;
+    width:50px;
 
-    height:70px;
+    height:50px;
 
-    border-radius:22px;
+    border-radius:50px;
 
-    background:#eef2ff;
+    background:#dfdbff;
 
     display:flex;
 
@@ -384,28 +468,29 @@ body{
 
 .form-icon i{
 
-    font-size:30px;
+    font-size:22px;
 
-    color:#4f46e5;
+    color:#5c09f6;
 }
 
 .form-header h2{
 
-    font-size:30px;
+    font-size:18px;
 
     margin-bottom:5px;
 }
 
 .form-header p{
 
-    color:#6b7280;
+    color:#5a6170;
+    font-size: 12px;
 }
 
 /* INPUTS */
 
 .input-group{
 
-    margin-bottom:25px;
+    margin-bottom:15px;
 }
 
 .input-group label{
@@ -414,7 +499,7 @@ body{
 
     margin-bottom:10px;
 
-    font-size:18px;
+    font-size:15px;
 
     font-weight:600;
 
@@ -429,11 +514,11 @@ body{
 
     border:2px solid #e5e7eb;
 
-    border-radius:16px;
+    border-radius:10px;
 
-    padding:18px;
+    padding:10px;
 
-    font-size:17px;
+    font-size:15px;
 
     outline:none;
 
@@ -442,7 +527,7 @@ body{
 
 .input-group textarea{
 
-    height:150px;
+    height:80px;
 
     resize:none;
 }
@@ -469,7 +554,7 @@ body{
 
     display:flex;
 
-    gap:16px;
+    gap:25px;
 
     margin-bottom:30px;
 }
@@ -488,11 +573,15 @@ body{
     margin-bottom:5px;
 
     color:#1e40af;
+    font-size: 20px;
+    
 }
 
 .note-box p{
 
-    color:#374151;
+    color:#2661c0;
+    font-size: 15px;
+    font-weight: 600px;
 }
 
 /* BUTTONS */
@@ -511,9 +600,9 @@ body{
 
     border:none;
 
-    padding:18px 32px;
+    padding:12px 25px;
 
-    border-radius:16px;
+    border-radius:5px;
 
     font-size:17px;
 
