@@ -26,7 +26,7 @@
     <!-- =========================
          SIDEBAR
     ========================== -->
-
+<div class="dashboard-container">
     <aside class="sidebar">
 
         <!-- LOGO -->
@@ -34,7 +34,9 @@
         <div class="logo">
 
             <div class="logo-icon">
-                <i class="fa-solid fa-comment"></i>
+
+             <i class="fa-solid fa-comment-dots"></i>
+
             </div>
 
             <div>
@@ -48,57 +50,81 @@
 
         <nav class="menu">
 
-            <a href="dashboard.html">
+            <a href="#" onclick="goToDashboard()">
+
                 <i class="fa-solid fa-house"></i>
+
                 Dashboard
-            </a>
 
-            <a href="create-complaint.html">
-                <i class="fa-solid fa-plus"></i>
-                Create Complaint
-            </a>
-
-            <a class="active"
-            href="user-complaints.html">
-
-                <i class="fa-solid fa-rectangle-list"></i>
-                My Complaints
-            </a>
-
-            <a href="#">
-                <i class="fa-regular fa-bell"></i>
-                Notifications
-
-                <span class="badge">
-                    3
-                </span>
-            </a>
-
-            <a href="#">
-                <i class="fa-regular fa-circle-question"></i>
-                Help & Support
             </a>
 
             <a href="#"
-            onclick="logout()">
+            onclick="goToCreate()">
 
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Logout
+                <i class="fa-solid fa-plus"></i>
+
+                Create Complaint
+
             </a>
+
+            <a href="#"
+              onclick="goToMy()">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                My Complaints
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-regular fa-bell"></i>
+
+                Notifications
+
+                <span class="menu-badge">
+                    3
+                </span>
+
+            </a>
+
+            <a href="#">
+
+                <i class="fa-regular fa-circle-question"></i>
+
+                Help & Support
+
+            </a>
+
+            <div class="menu-line"></div>
+
+            <a href="#"
+onclick="logout()">
+
+    <i class="fa-solid fa-right-from-bracket"></i>
+
+    Logout
+
+</a>
 
         </nav>
 
-        <!-- SIDEBAR CARD -->
+        <!-- BOTTOM CARD -->
 
-        <div class="sidebar-card">
+        <div class="support-card">
 
-            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="image1">
+            
 
-            <h3>Your voice</h3>
+            <div class="card-text">
+                <h3> Your voice matters!</h3>
 
             <p>
-                Matters to us
+                We are here to listen and
+                resolve your issues.
             </p>
+            </div>
+            
+            
 
         </div>
 
@@ -112,34 +138,43 @@
     <main class="main-content">
 
         <!-- TOPBAR -->
+<div class="topbar">
 
-        <div class="topbar">
+        <i class="fa-solid fa-bars menu-icon"></i>
 
-            <i class="fa-solid fa-bars menu-icon"></i>
+        <div class="top-right">
 
-            <div class="top-right">
+            <div class="notification">
 
-                <div class="notification">
+                <i class="fa-regular fa-bell"></i>
 
-                    <i class="fa-regular fa-bell"></i>
-
-                    <span>3</span>
-
-                </div>
-
-                <div class="profile">
-
-                    <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="image2">
-
-                    <span id="userName">
-                        Priya Verma
-                    </span>
-
-                </div>
+                <span>3</span>
 
             </div>
 
+            <div class="profile-section">
+
+    <!-- PROFILE ICON -->
+
+    <div class="profile-box">
+
+        <i class="fa-solid fa-user"></i>
+
+    </div>
+
+    <!-- USER NAME -->
+
+    <div class="profile-info">
+
+        <h3 id="userName"></h3>
+
+    </div>
+
+</div>
+
         </div>
+
+    </div>
 
         <!-- PAGE TITLE -->
 
@@ -169,6 +204,8 @@
     <!-- JS -->
 
     <script src="JavaScript/user-complaints.js"></script>
+
+</div>
 
 </body>
 </html>

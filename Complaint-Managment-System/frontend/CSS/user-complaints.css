@@ -7,45 +7,66 @@
     padding:0;
     box-sizing:border-box;
 }
-
 body{
 
     font-family:Arial, Helvetica, sans-serif;
 
     background:#f4f6fb;
 
-    display:flex;
-}
+    min-height:100vh;
 
+    overflow-x:hidden;
+}
 /* =========================
    SIDEBAR
 ========================= */
+/* SIDEBAR */
+
+.dashboard-container{
+
+    display:flex;
+
+    width:100%;
+
+    height:100vh;
+}
 
 .sidebar{
 
-    width:280px;
+    width:240px;
 
     min-height:100vh;
 
     background:
     linear-gradient(
     180deg,
-    #4f46e5,
-    #6d28d9,
-    #2563eb
+    #4f46e5 0%,
+    #6d28d9 55%,
+    #2563eb 100%
     );
 
-    padding:25px 20px;
+    padding:22px 18px;
 
     color:white;
 
-    position:fixed;
+    display:flex;
 
-    left:0;
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    
 
     top:0;
-}
+    left: 0;
 
+    overflow:hidden;
+
+    box-shadow:
+    8px 0 30px rgba(79,70,229,0.18);
+
+    position: fixed;
+}
 /* LOGO */
 
 .logo{
@@ -56,23 +77,36 @@ body{
 
     gap:14px;
 
-    padding:16px;
+    margin-bottom:20px;
 
-    border-radius:24px;
+    margin-top: -20px;
 
-    background:
-    rgba(255,255,255,0.08);
+    margin-left: -18px;
+    margin-right: -18px;
 
-    margin-bottom:35px;
+    padding-left: 25px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+
+    
+background:
+    linear-gradient(
+    135deg,
+    rgba(68,32,255,0.95),
+    rgba(79,70,229,0.85)
+    );
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.15);
 }
-
 .logo-icon{
 
-    width:65px;
+    width:50px;
 
-    height:65px;
+    height:50px;
 
-    border-radius:20px;
+    border-radius:10px;
 
     background:white;
 
@@ -81,6 +115,9 @@ body{
     justify-content:center;
 
     align-items:center;
+
+    box-shadow:
+    0 10px 25px rgba(255,255,255,0.15);
 }
 
 .logo-icon i{
@@ -93,11 +130,15 @@ body{
 .logo h2{
 
     font-size:20px;
+
+    font-weight:700;
 }
 
 .logo p{
 
     opacity:0.8;
+
+    margin-top:2px;
 }
 
 /* MENU */
@@ -108,7 +149,10 @@ body{
 
     flex-direction:column;
 
-    gap:12px;
+    gap:15px;
+  
+    margin-top: -20px;
+     
 }
 
 .menu a{
@@ -117,21 +161,23 @@ body{
 
     color:white;
 
-    padding:18px 20px;
+    padding:10px;
 
-    border-radius:20px;
+    border-radius:18px;
 
     display:flex;
 
     align-items:center;
 
-    gap:14px;
+    gap:15px;
 
-    font-size:18px;
+    position:relative;
 
     transition:0.3s;
 
-    position:relative;
+    font-size: 15px;
+
+    
 }
 
 .menu a:hover,
@@ -141,19 +187,36 @@ body{
     rgba(255,255,255,0.18);
 }
 
-.badge{
+.menu-line{
+
+    width:100%;
+
+    height:1.5px;
+
+    
+
+    border:none;
+
+    background:
+    rgba(255,255,255,0.18);
+
+    box-shadow:
+    0 0 8px rgba(255,255,255,0.08);
+}
+
+.menu-badge{
 
     position:absolute;
 
-    right:18px;
-
-    width:28px;
-
-    height:28px;
-
-    border-radius:50%;
+    right:20px;
 
     background:#ff4da6;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
 
     display:flex;
 
@@ -161,35 +224,44 @@ body{
 
     align-items:center;
 
-    font-size:13px;
+    font-size:10px;
 }
 
-/* SIDEBAR CARD */
+/* SUPPORT CARD */
 
-.sidebar-card{
+.card-text{
 
-    margin-top:40px;
+    
 
     background:
-    rgba(255,255,255,0.12);
+    rgba(255, 255, 255, 0.12);
 
-    border-radius:28px;
+    border-radius:20px;
 
-    padding:20px;
+    padding:15px;
 
     text-align:center;
+
+    
 }
 
-.sidebar-card img{
-
-    width:160px;
+.card-text h3{
+    font-size: 15px;
+}
+.card-text p{
+    font-size: 11px;
 }
 
-.sidebar-card h3{
 
-    margin-top:10px;
 
-    font-size:20px;
+.support-card h3{
+
+    margin-bottom:12px;
+}
+
+.support-card p{
+
+    line-height:1.6;
 }
 
 /* =========================
@@ -216,11 +288,15 @@ body{
     align-items:center;
 
     margin-bottom:30px;
+
+    margin-top: -20px;
 }
 
 .menu-icon{
 
-    font-size:30px;
+    margin-left: -45px;
+
+    font-size:17px;
 
     color:#1e1b4b;
 }
@@ -231,14 +307,16 @@ body{
 
     align-items:center;
 
-    gap:25px;
+    gap:35px;
 }
+
+/* NOTIFICATION */
 
 .notification{
 
     position:relative;
 
-    font-size:24px;
+    font-size:20px;
 }
 
 .notification span{
@@ -249,9 +327,9 @@ body{
 
     right:-12px;
 
-    width:22px;
+    width:15px;
 
-    height:22px;
+    height:15px;
 
     border-radius:50%;
 
@@ -267,57 +345,85 @@ body{
 
     font-size:12px;
 }
-
-/* PROFILE */
-
-.profile{
+.profile-section{
 
     display:flex;
 
     align-items:center;
 
-    gap:12px;
+    gap:15px;
 }
 
-.profile img{
+.profile-box{
 
-    width:45px;
+    width:30px;
 
-    height:45px;
+    height:30px;
 
     border-radius:50%;
+
+    background:
+    linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:
+    0 8px 20px rgba(99,102,241,0.22);
 }
 
-.profile span{
+.profile-box i{
 
-    font-size:18px;
+    color:white;
 
-    font-weight:600;
+    font-size:15px;
 }
 
-/* TITLE */
+.profile-info h3{
 
-.page-title{
+    font-size:15px;
 
-    margin-bottom:30px;
-}
-
-.page-title h1{
-
-    font-size:48px;
-
-    margin-bottom:10px;
+    font-weight:700;
 
     color:#111827;
 }
 
-.page-title p{
 
-    color:#4f46e5;
+/* PAGE TITLE */
 
-    font-size:18px;
+.page-title{
+
+    margin-bottom:25px;
+
+    margin-left: -20px;
+    margin-top: -15px;
 }
 
+.page-title h1{
+
+    font-size:30px;
+
+    color:#111827;
+
+    margin-bottom:5px;
+}
+
+.page-title p{
+
+    color:#1e64ee;
+
+    font-size:15px;
+
+    font-weight:700;
+    
+}
 /* =========================
    COMPLAINT CARD
 ========================= */
@@ -334,7 +440,7 @@ body{
 
     display:flex;
 
-    justify-content:space-between;
+    justify-content:flex-start;
 
     align-items:center;
 
@@ -358,9 +464,9 @@ body{
 
 .complaint-icon{
 
-    width:90px;
+    width:65px;
 
-    height:90px;
+    height:65px;
 
     border-radius:24px;
 
@@ -375,7 +481,7 @@ body{
 
 .complaint-icon i{
 
-    font-size:38px;
+    font-size:25px;
 
     color:#5b3df5;
 }
@@ -384,7 +490,7 @@ body{
 
 .complaint-details h2{
 
-    font-size:38px;
+    font-size:20px;
 
     margin-bottom:10px;
 
@@ -397,7 +503,7 @@ body{
 
     margin-bottom:18px;
 
-    font-size:20px;
+    font-size:15px;
 }
 
 /* META */
@@ -417,26 +523,25 @@ body{
 
     color:#5b3df5;
 
-    padding:10px 18px;
+    padding:7px 15px;
 
     border-radius:14px;
 
-    font-size:15px;
+    font-size:12px;
 
     font-weight:600;
 }
 
 /* RIGHT */
-
 .card-right{
+
+    width:180px;
 
     display:flex;
 
     flex-direction:column;
 
     gap:18px;
-
-    align-items:flex-start;
 }
 
 /* STATUS */
@@ -505,4 +610,149 @@ body{
     background:#dcfce7;
 
     color:#16a34a;
+}
+
+/* DIVIDER */
+.divider{
+
+    width:1px;
+
+    height:110px;
+
+    background:#ececec;
+
+    margin-left:auto;
+
+    margin-right:55px;
+}
+
+/* RIGHT SECTION */
+
+.card-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    min-width:150px;
+}
+
+/* LABELS */
+.status-box p,
+.priority-box p{
+
+    font-size:15px;
+
+    color:#6b7280;
+
+    margin:0;
+
+    font-weight:500;
+}
+.status-box,
+.priority-box{
+
+    display:grid;
+
+    grid-template-columns:80px 140px;
+
+    align-items:center;
+
+    margin-bottom:14px;
+}
+/* MENU BUTTON */
+
+.card-menu{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:14px;
+
+    border:1px solid #ececec;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.card-menu:hover{
+
+    background:#f5f5f5;
+}
+
+/* CARD IMPROVEMENT */
+
+.complaint-card{
+
+    align-items:center;
+
+    gap:35px;
+}
+
+/* TITLE SIZE */
+
+.complaint-details h2{
+
+    font-size:22px;
+
+    margin-bottom:10px;
+}
+
+/* DESCRIPTION */
+
+.complaint-details p{
+
+    font-size:15px;
+
+    margin-bottom:16px;
+}
+
+/* META */
+
+.meta{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.meta span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.status,
+.priority{
+
+    width:130px;
+
+    height:42px;
+
+    border-radius:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+    font-size:14px;
 }

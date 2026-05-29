@@ -118,3 +118,4 @@ async function loadDepartments() {
         console.error("Department load error:", error);
     }
 }
+
