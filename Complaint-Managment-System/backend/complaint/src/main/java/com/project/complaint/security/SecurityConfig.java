@@ -42,7 +42,8 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
                 .requestMatchers(HttpMethod.GET,
 
-                       "/api/auth/total-users"
+                       "/api/auth/total-users",
+                       "/api/activities"
 
                 ).permitAll()
 

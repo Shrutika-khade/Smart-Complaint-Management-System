@@ -39,9 +39,15 @@ body{
 
     justify-content:space-between;
 
-    position:sticky;
+    position:fixed;
 
     top:0;
+
+    left:0;
+
+    overflow:hidden;
+
+    z-index:1000;
 
     box-shadow:
     8px 0 30px rgba(79,70,229,0.18);
@@ -130,11 +136,7 @@ background:
 
     gap:15px;
 
-    margin-top: -380px;
-
-
-
-    
+    margin-top: -270px; 
      
 }
 
@@ -225,7 +227,7 @@ background:
 
     text-align:center;
 
-    margin-top: -190px;
+    margin-top: -90px;
 }
 
 .card-text h3{
@@ -251,9 +253,13 @@ background:
 
 .main-content{
 
-    flex:1;
+    margin-left:240px;
+
+    width:calc(100% - 240px);
 
     padding:30px;
+
+    min-height:100vh;
 }
 
 /* TOPBAR */
@@ -1614,55 +1620,56 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     gap:8px;
 }
 
-/* =========================
-   TABLET RESPONSIVE
-========================= */
+@media screen and (max-width:1024px){
 
-@media(max-width:1024px){
+    .stats-grid{
 
-    .dashboard-content{
-        flex-direction:column;
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
-    .stats-cards{
-        grid-template-columns:repeat(2,1fr);
+    .quick-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+        width:100%;
     }
 
-    .quick-actions{
+    .bottom-layout{
+
         grid-template-columns:1fr;
     }
 
-    .main-layout{
-        flex-direction:column;
-    }
+    .main-content-box{
 
-    .side-cards{
         width:100%;
     }
+
+    .quick-card{
+
+        width:100%;
+    }
+
 }
 
-
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-
-@media(max-width:768px){
+@media screen and (max-width:768px){
 
     body{
+
         overflow-x:hidden;
     }
 
     /* SIDEBAR */
 
-    .sidebar{
+   .sidebar{
+    width:70px;
+    padding:15px 5px;
+}
 
-        width:70px;
-        padding:20px 10px;
-    }
-
-    .sidebar h2,
-    .sidebar p,
-    .menu span{
+    .logo h2,
+    .logo p,
+    .support-card{
 
         display:none;
     }
@@ -1672,75 +1679,107 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
         justify-content:center;
     }
 
+    .menu a span{
+
+        display:none;
+    }
+
     /* MAIN CONTENT */
 
     .main-content{
 
         margin-left:70px;
+
+        width:calc(100% - 70px);
+
         padding:15px;
     }
 
-    /* TOP CARDS */
+    /* HERO */
 
-    .stats-cards{
+    .hero-banner{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        height:auto;
+
+        gap:15px;
+
+        padding:20px;
+    }
+
+    /* STATS */
+
+    .stats-grid{
 
         grid-template-columns:1fr;
     }
 
-    /* QUICK ACTION */
+    .hero-banner img{
 
-    .quick-actions{
+    width:70px;
+}
+
+    /* QUICK ACTIONS */
+
+    .quick-grid{
+
+        grid-template-columns:1fr;
+
+        width:100%;
+    }
+
+    .quick-card{
+
+        width:100%;
+    }
+
+    /* BOTTOM SECTION */
+
+    .bottom-layout{
 
         grid-template-columns:1fr;
     }
-
-    /* OVERVIEW + SIDE */
-
-    .main-layout{
-
-        flex-direction:column;
-    }
-
-    .side-cards{
-
-        width:100%;
-    }
-
-    /* RECENT COMPLAINT */
-
-    .recent-item{
-
-        flex-direction:column;
-        align-items:flex-start;
-        gap:14px;
-    }
-
-    .recent-right{
-
-        width:100%;
-        justify-content:space-between;
-    }
-
-    /* DONUT CHART */
 
     .overview-wrapper{
 
         flex-direction:column;
-        align-items:center;
-        gap:20px;
     }
 
-    /* WELCOME BANNER */
-
-    .welcome-banner{
+    .recent-item{
 
         flex-direction:column;
-        text-align:center;
-        gap:20px;
+
+        align-items:flex-start;
     }
 
-    .welcome-banner img{
+    .sidebar{
 
-        width:120px;
+        transform:translateX(-100%);
+    }
+
+    .main-content{
+
+        margin-left:0;
+
+        width:100%;
+    }
+
+}
+
+@media screen and (max-width:768px){
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .bottom-layout{
+        grid-template-columns:1fr;
+    }
+
+    .middle-layout{
+        grid-template-columns:1fr;
     }
 }

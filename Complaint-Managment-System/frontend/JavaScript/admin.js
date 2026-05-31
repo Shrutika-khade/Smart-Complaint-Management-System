@@ -281,3 +281,9 @@ function toggleTheme(){
     document.body.classList.toggle("light-mode");
 }
 
+function logout(){
+
+    localStorage.clear();
+
+    window.location = "login.html";
+}

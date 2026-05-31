@@ -11,6 +11,9 @@ import com.project.complaint.entity.User;
 import com.project.complaint.repository.UserRepository;
 import com.project.complaint.model.Complaint;
 
+import com.project.complaint.entity.Activity;
+import com.project.complaint.repository.ActivityRepository;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,16 +24,20 @@ public class ComplaintService {
     private final ComplaintRepository complaintRepository;
     private final DepartmentRepository departmentRepository;
     private final UserRepository userRepository;
+    private final ActivityRepository activityRepository;
 
 
-    public ComplaintService(ComplaintRepository complaintRepository,
-                        DepartmentRepository departmentRepository,
-                        UserRepository userRepository) {
+    public ComplaintService(
+    ComplaintRepository complaintRepository,
+    DepartmentRepository departmentRepository,
+    UserRepository userRepository,
+    ActivityRepository activityRepository) {
 
     this.complaintRepository = complaintRepository;
     this.departmentRepository = departmentRepository;
     this.userRepository = userRepository;
-   }
+    this.activityRepository = activityRepository;
+}
 
    public Complaint createComplaintByEmail(Complaint complaint, String email) {
 
@@ -82,18 +89,34 @@ public class ComplaintService {
     complaint.setPriority(Priority.LOW);
 
     if (complaint.getTitle() != null) {
-        String title = complaint.getTitle().toLowerCase();
+    String title = complaint.getTitle().toLowerCase();
 
-        if (title.contains("server") || title.contains("down")) {
-            complaint.setPriority(Priority.HIGH);
-        } 
-        else if (title.contains("network") || title.contains("wifi")) {
-            complaint.setPriority(Priority.MEDIUM);
-        }
+    if (title.contains("server") || title.contains("down")) {
+        complaint.setPriority(Priority.HIGH);
     }
-    
+    else if (title.contains("network") || title.contains("wifi")) {
+        complaint.setPriority(Priority.MEDIUM);
+    }
+}
 
-    return complaintRepository.save(complaint);
+Complaint savedComplaint =
+        complaintRepository.save(complaint);
+
+Activity activity = new Activity();
+
+activity.setMessage(
+        "New complaint submitted: "
+        + savedComplaint.getTitle()
+);
+
+activity.setCreatedAt(
+        LocalDateTime.now()
+);
+
+activityRepository.save(activity);
+
+return savedComplaint;
+
 }
     // READ - all
     public List<Complaint> getAllComplaints() {
@@ -115,7 +138,6 @@ public class ComplaintService {
     User user = userRepository.findByEmail(email)
             .orElseThrow(() -> new RuntimeException("User not found"));
 
-    // 🔐 ROLE CHECK
     if (!user.getRole().equals("ADMIN")) {
         throw new org.springframework.web.server.ResponseStatusException(
                 org.springframework.http.HttpStatus.FORBIDDEN,
@@ -126,7 +148,25 @@ public class ComplaintService {
     complaint.setStatus(status);
     complaint.setUpdatedAt(LocalDateTime.now());
 
-    return complaintRepository.save(complaint);
+    Complaint updatedComplaint =
+            complaintRepository.save(complaint);
+
+    Activity activity = new Activity();
+
+    activity.setMessage(
+            "Complaint '"
+            + updatedComplaint.getTitle()
+            + "' marked as "
+            + status
+    );
+
+    activity.setCreatedAt(
+            LocalDateTime.now()
+    );
+
+    activityRepository.save(activity);
+
+    return updatedComplaint;
 }
     // DELETE
     public void deleteComplaint(Long id) {
@@ -187,13 +227,34 @@ getDashboardData(String email) {
     public List<Complaint> getComplaintsByDepartment(Long deptId) {
     return complaintRepository.findByDepartmentId(deptId);
     }
-    public Complaint updateStatus(Long id, String status) {
+
+
+   public Complaint updateStatus(Long id, String status) {
+
     Complaint c = complaintRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Complaint not found"));
 
     c.setStatus(status);
 
-    return complaintRepository.save(c);
+    Complaint updatedComplaint =
+            complaintRepository.save(c);
+
+    Activity activity = new Activity();
+
+    activity.setMessage(
+            "Complaint '"
+            + updatedComplaint.getTitle()
+            + "' marked as "
+            + status
+    );
+
+    activity.setCreatedAt(
+            LocalDateTime.now()
+    );
+
+    activityRepository.save(activity);
+
+    return updatedComplaint;
 }
 
 public List<Complaint>

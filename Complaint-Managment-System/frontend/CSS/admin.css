@@ -46,6 +46,9 @@ linear-gradient(
     left:0;
 
     top:0;
+
+    position: fixed;
+    z-index:1000;
     
 
     padding:0;
@@ -295,6 +298,14 @@ hr{
     -webkit-backdrop-filter:blur(20px);
 
     position:relative;
+
+    margin-left:250px;
+
+    width:calc(100% - 250px);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
 }
 
 .topbar{
@@ -825,6 +836,15 @@ backdrop-filter:blur(12px);;
     margin-bottom: 2px;
     
 }
+.table-card{
+    margin-top:30px;
+
+    margin-left:25px;
+    margin-right:25px;
+
+    width:calc(100% - 50px);
+}
+
 
 .card-header{
     display:flex;
