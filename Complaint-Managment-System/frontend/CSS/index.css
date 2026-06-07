@@ -47,21 +47,24 @@ backdrop-filter: blur(10px);
     display:flex;
     align-items:center;
     gap:15px;
-    color:white;
 }
 
-.logo i{
-    font-size:35px;
-    color:#7c4dff;
+.logo-icon{
+    font-size: 40px;
 }
 
 .logo h2{
-    font-size:28px;
+    color:#7c4dff !important;
+    font-size:25px;
+    font-weight:700;
+    line-height:1;
+    margin-bottom:4px;
 }
 
 .logo p{
+    color:#ffffff !important;
     font-size:12px;
-    opacity:.8;
+    margin:0;
 }
 
 .nav-links{
@@ -110,7 +113,7 @@ backdrop-filter: blur(10px);
 ===================== */
 
 .hero{
-    min-height:100vh;
+    min-height:50vh;
 
     background:
     linear-gradient(
@@ -124,35 +127,42 @@ backdrop-filter: blur(10px);
     justify-content:space-between;
     align-items:center;
 
-    padding:120px 100px 60px;
+    padding:100px 80px 40px;
+
+    padding-bottom: 20px;
+    
 }
 
 .hero-content{
     max-width:650px;
+    
 }
 
 .hero-content h1{
     color:white;
-    font-size:72px;
+    font-size:30px;
     font-weight:800;
     line-height:1.1;
 }
 
 .hero-content h2{
-    margin-top:20px;
+    margin-top:10px;
     color:white;
-    font-size:36px;
+    font-size:18px;
+    margin-left: -285px;
+
+    
 }
 
 .hero-content span{
-    color:#8a63ff;
+    color:#a804f9;
 }
 
 .hero-content p{
     color:#d7d7d7;
-    margin-top:25px;
-    line-height:1.8;
-    font-size:18px;
+    margin-top:-35px;
+
+    font-size:13px;
 }
 
 .hero-buttons{
@@ -165,20 +175,25 @@ backdrop-filter: blur(10px);
 .hero-register{
     padding:16px 35px;
     border:none;
-    border-radius:12px;
+    border-radius:5px;
     cursor:pointer;
-    font-size:16px;
+    font-size:14px;
     font-weight:600;
+
+    padding-top: 9px;
+    padding-bottom: 9px;
+    margin-top: -15px;
+
 }
 
 .hero-login{
-    background:#7c4dff;
+    background:#8718fd;
     color:white;
 }
 
 .hero-register{
     background:white;
-    color:#7c4dff;
+    color:#4410d3;
 }
 
 .hero-image img{
