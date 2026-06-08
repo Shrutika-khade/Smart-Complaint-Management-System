@@ -149,7 +149,7 @@ backdrop-filter: blur(10px);
     margin-top:10px;
     color:white;
     font-size:18px;
-    margin-left: -285px;
+    text-align:left;
 
     
 }
@@ -435,4 +435,134 @@ section{
 .hero{
     opacity:1 !important;
     transform:none !important;
+}
+.info-section{
+    display:grid;
+    grid-template-columns:1fr 1.2fr 1fr;
+
+    gap:40px;
+
+    background:#f8f8fc;
+
+    padding:20px 80px 40px;
+
+    border-top:1px solid #ececf3;
+}
+.info-card{
+    background:transparent;
+    box-shadow:none;
+    border-radius:0;
+    padding:20px 30px;
+
+}
+.info-card:hover{
+    transform:translateY(-5px);
+}
+.info-card h2{
+    font-size:20px;
+    font-weight:700;
+    text-align:left;
+
+    margin-bottom:10px;
+}
+
+.info-card h2::after{
+    content:"";
+    display:block;
+
+    width:35px;
+    height:3px;
+
+    background:#7c4dff;
+
+    margin-top:10px;
+}
+.info-card p{
+    color:#666;
+    line-height:1.8;
+}
+
+.info-card ul{
+    padding-left:20px;
+}
+
+.info-card li{
+    margin-bottom:12px;
+}
+
+.mini-stat{
+    background:#f4f4ff;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+}
+
+.mini-stat strong{
+    display:block;
+    font-size:24px;
+    color:#7c4dff;
+}
+.info-card{
+    border-right:1px solid #e5e5ee;
+}
+
+.info-card:last-child{
+    border-right:none;
+}
+.stats-boxes{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+}
+
+.mini-stat{
+    padding:18px;
+    border-radius:12px;
+}
+.stat1{background:#f3edff;}
+.stat2{background:#eefcf4;}
+.stat3{background:#fff4df;}
+.stat4{background:#edf5ff;}
+
+.about-icon{
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    background:#f3edff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:30px;
+    color:#7c4dff;
+
+    margin-bottom:20px;
+}
+.feature-columns{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-top:20px;
+}
+
+.feature-columns h4{
+    color:#6c4cff;
+    margin-bottom:15px;
+}
+.learn-btn{
+    margin-top:20px;
+    padding:10px 22px;
+    border:none;
+    border-radius:8px;
+    background:#7c4dff;
+    color:white;
+    cursor:pointer;
 }
