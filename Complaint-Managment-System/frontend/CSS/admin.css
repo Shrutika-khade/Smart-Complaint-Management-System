@@ -1222,4 +1222,7 @@ body.light-mode input{
 
     border:1px solid #d1d5db;
 }
-
+.rejected-dot{
+    background:#ff4d4d;
+    box-shadow:0 0 10px #ff4d4d;
+}

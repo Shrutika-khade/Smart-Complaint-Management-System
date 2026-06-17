@@ -31,9 +31,10 @@
 
     <ul class="nav-links">
         <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#features">Features</a></li>
           <li><a href="#works">How It Work</a></li>
-        <li><a href="#about">About</a></li>
+        
         <li><a href="#contact">Contact</a></li>
       
     </ul>
@@ -95,8 +96,7 @@
     </div>
 
     <div class="hero-image">
-
-    
+        <img src="Image/complaintImage.png" alt="Hero Image">
 
     </div>
 
@@ -106,11 +106,11 @@
 
     <!-- ABOUT -->
 
-    <div class="info-card">
+    <div class="info-card" >
 
     
 
-    <div class="about-wrapper">
+    <div class="about-wrapper" id="about" >
 
         <div class="about-icon">
             <i class="fa-solid fa-file-circle-check"></i>
@@ -146,7 +146,7 @@
 
     <h2>KEY FEATURES</h2>
 
-    <div class="feature-columns">
+    <div class="feature-columns" id="features">
 
         <div>
             <h4>For Users</h4>
@@ -185,7 +185,10 @@
     <div class="stats-boxes">
 
         <div class="mini-stat stat1">
-    <i class="fa-solid fa-user-plus stat-icon"></i>
+            <div class="stat-icon">
+                    <i class="fa-solid fa-user-plus "></i>
+            </div>
+
     <div class="stat-text">
         <strong>500+</strong>
         <span>Complaints Managed</span>
@@ -193,7 +196,10 @@
 </div>
 
 <div class="mini-stat stat2">
-    <i class="fa-solid fa-users stat-icon"></i>
+    <div class="stat-icon">
+         <i class="fa-solid fa-users "></i>
+    </div>
+   
     <div class="stat-text">
         <strong>100+</strong>
         <span>Registered Users</span>
@@ -201,7 +207,11 @@
 </div>
 
 <div class="mini-stat stat3">
-    <i class="fa-regular fa-clock stat-icon"></i>
+
+    <div class="stat-icon">
+        <i class="fa-regular fa-clock "></i>
+    </div>
+    
     <div class="stat-text">
         <strong>95%</strong>
         <span>Resolution Rate</span>
@@ -209,7 +219,10 @@
 </div>
 
 <div class="mini-stat stat4">
-    <i class="fa-solid fa-stopwatch stat-icon"></i>
+    <div class="stat-icon">
+        <i class="fa-solid fa-stopwatch "></i>
+    </div>
+    
     <div class="stat-text">
         <strong>24/7</strong>
         <span>Support Available</span>
@@ -224,109 +237,166 @@
 
 <!-- HOW IT WORKS -->
 
-<section  id="works" class="workflow">
+<section id="works" class="workflow">
 
     <h2>HOW IT WORKS</h2>
+    <div class="section-line"></div>
 
-    <div class="steps">
+    <div class="workflow-container">
 
-        <div class="step">Register</div>
+        <div class="work-item">
+            <div class="work-icon purple">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+            <h4>1. User Registers</h4>
+            <p>User creates an account on the system</p>
+        </div>
 
-        <div class="step">Submit Complaint</div>
+        <div class="arrow">→</div>
 
-        <div class="step">Admin Reviews</div>
+        <div class="work-item">
+            <div class="work-icon blue">
+                <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <h4>2. Submit Complaint</h4>
+            <p>User submits a complaint with details</p>
+        </div>
 
-        <div class="step">Assigned</div>
+        <div class="arrow">→</div>
 
-        <div class="step">Status Updated</div>
+        <div class="work-item">
+            <div class="work-icon orange">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <h4>3. Admin Reviews</h4>
+            <p>Admin reviews and verifies complaint</p>
+        </div>
 
-        <div class="step">Resolved</div>
+        <div class="arrow">→</div>
+
+        <div class="work-item">
+            <div class="work-icon green">
+                <i class="fa-solid fa-expand"></i>
+            </div>
+            <h4>4. Assigned</h4>
+            <p>Complaint assigned to the appropriate team</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="work-item">
+            <div class="work-icon red">
+                <i class="fa-solid fa-arrows-up-down-left-right"></i>
+            </div>
+            <h4>5. Status Updated</h4>
+            <p>Progress is updated in real-time</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="work-item">
+            <div class="work-icon success">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h4>6. Resolved</h4>
+            <p>Complaint is resolved successfully</p>
+        </div>
 
     </div>
 
 </section>
-
 <!-- TECHNOLOGY -->
+<section class="bottom-info">
 
-<section class="technology">
+    <div class="tech-section">
 
-    <h2>TECHNOLOGY USED</h2>
+        <h3>TECHNOLOGY USED</h3>
 
-    <div class="tech-grid">
+        <div class="bottom-line"></div>
 
-        <div class="tech-card">
-            HTML / CSS / JavaScript
-        </div>
-
-        <div class="tech-card">
-            Spring Boot
-        </div>
-
-        <div class="tech-card">
-            MySQL
-        </div>
-
-        <div class="tech-card">
-            JWT Authentication
-        </div>
-
+        <div class="tech-items">
+<div class="tech-item frontend">
+    <i class="fa-solid fa-code"></i>
+    <div>
+        <h4>Frontend</h4>
+        <p>HTML, CSS, JavaScript</p>
     </div>
+</div>
 
-</section>
+<div class="tech-item backend">
+    <i class="fa-solid fa-server"></i>
+    <div>
+        <h4>Backend</h4>
+        <p>Spring Boot (Java)</p>
+    </div>
+</div>
 
-<!-- CONTACT -->
+<div class="tech-item database">
+    <i class="fa-solid fa-database"></i>
+    <div>
+        <h4>Database</h4>
+        <p>MySQL</p>
+    </div>
+</div>
 
-<section id="contact" class="contact-section">
-
-    <h2>CONTACT US</h2>
-
-    <div class="contact-grid">
-
-        <div>
-
-            <i class="fa-solid fa-envelope"></i>
-
-            support@resolvex.com
-
-        </div>
-
-        <div>
-
-            <i class="fa-solid fa-phone"></i>
-
-            +91 9876543210
-
-        </div>
-
-        <div>
-
-            <i class="fa-solid fa-location-dot"></i>
-
-            Pune, Maharashtra
+<div class="tech-item security">
+    <i class="fa-solid fa-shield-halved"></i>
+    <div>
+        <h4>Security</h4>
+        <p>JWT Authentication</p>
+    </div>
+</div>
 
         </div>
 
     </div>
 
+    <div class="contact-section-box" id="contact">
+
+        <h3>CONTACT US</h3>
+        <div class="bottom-line"></div>
+<div class="contact-details">
+
+    <div class="contact-item">
+        <i class="fa-regular fa-envelope"></i>
+        <div>
+            <h4>Email</h4>
+            <p>support@resolvex.com</p>
+        </div>
+    </div>
+
+    <div class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+            <h4>Phone</h4>
+            <p>+91 98765 43210</p>
+        </div>
+    </div>
+
+    <div class="contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+            <h4>Address</h4>
+            <p>Nagpur, Maharashtra, India</p>
+        </div>
+    </div>
+
+</div>
+    </div>
+
 </section>
 
-<!-- FOOTER -->
 
 <footer>
 
-    <p>
-
-        © 2026 Smart Complaint Management System
-
-    </p>
+    <p>© 2026 Smart Complaint Management System. All rights reserved.</p>
 
     <p>
-
-        Developed By Shrutika Khade ❤️
-
+        Developed with ❤️ by Shrutika Khade
     </p>
 
 </footer>
+
 
 <script src="JavaScript/index.js"></script>
 

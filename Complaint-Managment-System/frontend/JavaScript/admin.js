@@ -97,8 +97,8 @@ function loadCharts(data){
    // TOTAL
 let total =
 data.openComplaints +
-data.resolvedComplaints;
-
+data.resolvedComplaints +
+data.rejectedComplaints;
 // CENTER TOTAL
 document.getElementById("totalCount").innerText =
 total;
@@ -110,6 +110,8 @@ data.openComplaints;
 document.getElementById("resolvedCount").innerText =
 data.resolvedComplaints;
 
+document.getElementById("rejectedCount").innerText =
+data.rejectedComplaints;
 // PERCENTAGES
 let openPercent =
 ((data.openComplaints / total) * 100).toFixed(0);
@@ -117,29 +119,39 @@ let openPercent =
 let resolvedPercent =
 ((data.resolvedComplaints / total) * 100).toFixed(0);
 
+let rejectedPercent =
+((data.rejectedComplaints / total) * 100).toFixed(0);
+
 document.getElementById("openPercent").innerText =
 `(${openPercent}%)`;
 
 document.getElementById("resolvedPercent").innerText =
 `(${resolvedPercent}%)`;
+
+document.getElementById("rejectedPercent").innerText =
+`(${rejectedPercent}%)`;
+
+
     new Chart(document.getElementById("pieChart"),{
 
         type:"doughnut",
 
         data:{
 
-            labels:["Open","Resolved"],
+            labels:["Open","Resolved", "Rejected"],
 
             datasets:[{
 
                 data:[
                     data.openComplaints,
-                    data.resolvedComplaints
+                    data.resolvedComplaints,
+                    data.rejectedComplaints
                 ],
 
                 backgroundColor:[
                     "#ed7e0f",
-                    "#0ea949"
+                    "#0ea949",
+                    "#ff4d4d"
                 ],
                 borderWidth:0,
             }]
