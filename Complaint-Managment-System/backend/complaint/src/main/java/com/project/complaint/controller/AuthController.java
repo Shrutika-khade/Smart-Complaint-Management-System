@@ -32,21 +32,23 @@ public class AuthController {
 }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user) {
+public ResponseEntity<?> register(@RequestBody User user) {
 
-    // Agar role null ho to default USER
+    if(userRepository.findByEmail(user.getEmail()).isPresent()){
+        return ResponseEntity.badRequest()
+                .body("Email already exists");
+    }
+
     if (user.getRole() == null || user.getRole().isEmpty()) {
         user.setRole("USER");
     }
 
-    // Encrypt password
     user.setPassword(passwordEncoder.encode(user.getPassword()));
 
     userRepository.save(user);
 
     return ResponseEntity.ok("User Registered Successfully");
-   }
-   
+}
 
 @PostMapping("/login")
 public ResponseEntity<?> login(@RequestBody User user,
