@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/complaints";
+const API_URL = "https://smart-complaint-management-system-8qyp.onrender.com/api/complaints";
 
 // Page Load
 document.addEventListener("DOMContentLoaded", () => {
@@ -88,8 +88,7 @@ async function loadDepartments() {
     try {
 
         let res = await fetch(
-            "http://localhost:8080/api/departments",
-
+    "https://smart-complaint-management-system-8qyp.onrender.com/api/departments",
             {
                 headers: {
 

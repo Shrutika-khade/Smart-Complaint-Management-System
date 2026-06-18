@@ -4,7 +4,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
-    fetch("http://localhost:8080/api/auth/login", {
+    fetch("https://smart-complaint-management-system-8qyp.onrender.com/api/auth/login", {
 
         method: "POST",
 

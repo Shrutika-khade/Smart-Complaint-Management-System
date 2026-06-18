@@ -31,7 +31,7 @@ async function loadDashboard(){
 
         let res = await fetch(
 
-            "http://localhost:8080/api/complaints/dashboard",
+            "https://smart-complaint-management-system-8qyp.onrender.com/api/complaints/dashboard",
 
             {
                 headers:{
@@ -126,7 +126,7 @@ async function loadRecentComplaints(){
 
         let res = await fetch(
 
-            "http://localhost:8080/api/complaints/my",
+            "https://smart-complaint-management-system-8qyp.onrender.com/api/complaints/my",
 
             {
                 headers:{

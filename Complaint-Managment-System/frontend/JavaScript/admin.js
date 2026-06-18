@@ -34,7 +34,7 @@ function toggleTheme(){
 async function loadDashboard(){
 
     let res = await fetch(
-        "http://localhost:8080/api/complaints/admin-dashboard",
+        "https://smart-complaint-management-system-8qyp.onrender.com/api/complaints/admin-dashboard",
 
         {
             headers:{
@@ -58,7 +58,7 @@ async function loadDashboard(){
     // LOAD TOTAL USERS
 
 let userRes = await fetch(
-    "http://localhost:8080/api/auth/total-users"
+    "https://smart-complaint-management-system-8qyp.onrender.com/api/auth/total-users"
 );
 
 let totalUsers = await userRes.json();
@@ -220,7 +220,7 @@ async function loadLatestComplaints() {
     try {
 
         let res = await fetch(
-            "http://localhost:8080/api/complaints",
+            "https://smart-complaint-management-system-8qyp.onrender.com/api/complaints",
             {
                 headers: {
                     "Authorization":

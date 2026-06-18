@@ -3,7 +3,7 @@
 // ============================
 
 const API_URL =
-"http://localhost:8080/api/complaints/my";
+"https://smart-complaint-management-system-8qyp.onrender.com/api/complaints/my";
 
 // ============================
 // LOGIN CHECK

@@ -1,4 +1,4 @@
-const API = "http://localhost:8080/api/users";
+const API = "https://smart-complaint-management-system-8qyp.onrender.com/api/users";
 
 let allUsers = [];
 

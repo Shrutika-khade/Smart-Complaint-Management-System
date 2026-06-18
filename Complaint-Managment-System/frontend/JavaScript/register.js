@@ -11,7 +11,7 @@ let role = document.getElementById("role").value;
 
 console.log(name, email, password, role); // debug
 
-fetch("http://localhost:8080/api/auth/register", {
+fetch("https://smart-complaint-management-system-8qyp.onrender.com/api/auth/register", {
 
     method: "POST",
 
