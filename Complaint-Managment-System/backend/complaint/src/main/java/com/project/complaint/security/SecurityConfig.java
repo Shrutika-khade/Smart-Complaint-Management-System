@@ -77,7 +77,7 @@ public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSou
     java.util.List.of(
         "http://127.0.0.1:5500",
         "http://localhost:5500",
-        "https://capable-puffpuff-7a4304.netlify.app",
+        "https://resolvex-smart-complaint.netlify.app",
 
         "https://smart-complaint-management-system-8qyp.onrender.com"
     )
