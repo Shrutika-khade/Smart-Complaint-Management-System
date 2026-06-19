@@ -169,7 +169,7 @@ MySQL Database
 
 ### Admin Dashboard
 
-![Admin Dashboard](/Project-Image/Admin_Dashboard.png)
+![Admin Dashboard](/Project-Image/Admin-Dash.jpeg
 
 ### Complaint Submission
 
